@@ -6,4 +6,6 @@ class SetItem < ActiveRecord::Base
   validates :order, presence: true
   validates :set, presence: true
 
+  belongs_to :song
+  belongs_to :set_list
 end

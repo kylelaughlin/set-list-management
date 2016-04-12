@@ -7,5 +7,6 @@ class Song < ActiveRecord::Base
   validates :artist, presence: true
 
   has_and_belongs_to_many :band_members
-
+  has_many :set_items
+  has_many :set_lists, through: :set_items 
 end
