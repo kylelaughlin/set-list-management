@@ -1,12 +1,12 @@
-development: 
+development:
   host: 'localhost'
   adapter: 'postgresql'
-  database: 'week-five-project'
+  database: 'set-list-manager'
   encoding: 'utf8'
   pool: 5
-test: 
+test:
   host: 'localhost'
   adapter: 'postgresql'
-  database: 'week-five-project-test'
+  database: 'set-list-manager-test'
   encoding: 'utf8'
   pool: 5
