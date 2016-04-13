@@ -19,7 +19,6 @@ class SetList < ActiveRecord::Base
   #
   # Returns nil - writes to the database
   def create_set_item(params, set_list_id)
-    binding.pry
     (1..4).each do |set|
       (1..10).each do |song|
         key_match = "#{set},#{song}"
