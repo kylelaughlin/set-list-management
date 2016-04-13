@@ -1,0 +1,12 @@
+<h1><%= @set_list.name %> - <% @set_list.performance_date.year %></h1>
+
+
+<form action="/set_lists/new/list" method="post">
+  <div class="form-group">
+    <label for="name">Set List Name:</label>
+    <input type="text" name="name" class="form-control" id="name">
+  </div>
+  <div class="form-group">
+    <label for="date">Performance Date:</label>
+    <input type="date" name="date" class="form-control" id="date">
+  </div>

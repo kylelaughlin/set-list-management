@@ -1,7 +1,13 @@
 <h1 class="text-center">Create New Set List</h1>
 
+<% if @set_list.errors.any? %>
+  <% @set_list.errors.full_messages.each do |m| %>
+    <p> Error: <%=m%><p>
+  <% end %>
+<% end %>
+
 <div style="width: 400px;margin: auto; align: auto;" class="text-center">
-<form action="/set_lists/new/songs" method="get">
+  <form action="/set_lists/new/list" method="get">
   <div class="form-group">
     <label for="sets">Number of Sets:</label>
     <input type="num" name="sets" class="form-control" id="sets">
