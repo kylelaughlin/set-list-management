@@ -1,12 +1,19 @@
 
 get '/set_lists/new' do
   @set_list = SetList.new
+  @venues = Venue.all
   erb :"set_lists/new"
 end
 
-post '/set_lists/new/list' do
+get '/set_lists/new/list' do
+  @sets = params['sets']
+  @number_of_songs = params['songs']
+  @venue = Venue.find_by_id(params['venue_id'])
+  erb :"set_lists/new_list"
+end
+
+post '/set_lists/new' do
   binding.pry
-  @name = params['name']
   #break this into a helper class?
   date_parts = params['date'].split("-")
   @date = Date.new(date_parts[0].to_i,date_parts[1].to_i,date_parts[2].to_i)
@@ -16,10 +23,4 @@ post '/set_lists/new/list' do
   else
     erb :"set_lists/new"
   end
-end
-
-get '/set_lists/new/:id' do
-  @sets = params['sets']
-  @num_of_songs = params['songs']
-  erb :"set_lists/new_list"
 end
