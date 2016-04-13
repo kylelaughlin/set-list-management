@@ -1,6 +1,32 @@
 <h1>Create Set Lists</h1>
 
 <form action="/set_lists/new/<%=@set_list.id%>" method="post">
+  <div class="row">
+    <!-- Create offset based on how many sets -->
+    <% if @sets == 3 %>
+      <div class="col-md-1"> </div>
+    <% elsif @sets == 2 %>
+      <div class="col-md-3"> </div>
+    <% else %>
+      <div class="col-md-4"> </div>
+    <% end %>
+    <% (1..@sets).each do |sets| %>
+      <div class="col-md-3 panel panel-default">
+        <h2>Set <%=sets%></h2>
+        <% (1..@number_of_songs).each do |order| %>
+          <select class="form-control" name="<%=sets%>,<%=order%>">
+            <% @songs.each do |song| %>
+              <option value="<%song.id%>"><%=song.title%></option>
+            <% end %>
+          </select>
+        <%end%>
+      </div>
+    <% end %>
+  </div>
+</form>
+
+<!--
+<form action="/set_lists/new/<%=@set_list.id%>" method="post">
 <div class = "row">
   <div class="col-md-2 panel panel-default">
     <p>Set One</p>

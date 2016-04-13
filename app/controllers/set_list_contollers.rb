@@ -21,15 +21,19 @@ post '/set_lists/new/:id' do
 end
 
 post '/set_lists/new' do
-  @sets = params['sets']
+  @sets = params['sets'].to_i
   @songs = params['songs']
   @venues = Venue.all
 
   #break this into a helper class?
   date_parts = params['date'].split("-")
   @date = Date.new(date_parts[0].to_i,date_parts[1].to_i,date_parts[2].to_i)
-  
-  @set_list = SetList.new(name: params['name'], performance_date: @date, venue_id: params['venue_id'])
+
+  @set_list = SetList.new(name: params['name'],
+                          performance_date: @date,
+                          venue_id: params['venue_id'],
+                          number_of_sets: @sets,
+                          songs_per_set: @songs)
   if @set_list.save
     redirect to("/set_lists/new/#{@set_list.id}?sets=#{@sets}&songs=#{@songs}")
   else
