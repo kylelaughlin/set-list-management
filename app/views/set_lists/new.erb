@@ -1,1 +1,15 @@
-<h1>Create New Set List</h1>
+<h1 class="text-center">Create New Set List</h1>
+
+<div style="width: 400px;margin: auto; align: auto;" class="text-center">
+<form action="/set_lists/new/songs" method="get">
+  <div class="form-group">
+    <label for="sets">Number of Sets:</label>
+    <input type="num" name="sets" class="form-control" id="sets">
+  </div>
+  <div class="form-group">
+    <label for="songs">Number of Songs Per Set:</label>
+    <input type="num" name="songs" class="form-control" id="songs">
+  </div>
+  <input type="submit" value="submit">
+</form>
+</div>
