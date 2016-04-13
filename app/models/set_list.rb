@@ -1,13 +1,15 @@
 #name :string representing the name of the venue
 #description :text representing notes for the set list
 #performance_date: date representing the date of the performance
-#number_of_sets
-#songs_per_set
+#number_of_sets: an integer representing the number of sets in a given setlist
+#songs_per_set: the number of songs in each set
 
 class SetList < ActiveRecord::Base
 
   validates :name, presence: true
   validates :performance_date, presence: true
+  validates :number_of_sets, numericality: {less_than_or_equal_to: 4}
+  validates :songs_per_set, numericality: {greater_than: 0}
 
   has_many :set_items
   has_many :songs, through: :set_items
