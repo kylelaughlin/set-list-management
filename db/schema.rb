@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 6) do
+ActiveRecord::Schema.define(version: 7) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,8 @@ ActiveRecord::Schema.define(version: 6) do
     t.text    "notes"
     t.date    "performance_date"
     t.integer "venue_id"
+    t.integer "number_of_sets"
+    t.integer "songs_per_set"
   end
 
   create_table "songs", force: :cascade do |t|

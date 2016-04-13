@@ -1,6 +1,8 @@
 #name :string representing the name of the venue
 #description :text representing notes for the set list
 #performance_date: date representing the date of the performance
+#number_of_sets
+#songs_per_set
 
 class SetList < ActiveRecord::Base
 
