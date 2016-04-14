@@ -3,7 +3,7 @@
 <form action="/set_lists/new/<%=@set_list.id%>" method="post">
   <div class="row">
     <!-- Create offset based on how many sets -->
-    <% if @sets == 3 %>
+    <% if @sets == 4 || @sets == 3 %>
       <div class="col-md-1"> </div>
     <% elsif @sets == 2 %>
       <div class="col-md-3"> </div>
@@ -11,8 +11,8 @@
       <div class="col-md-4"> </div>
     <% end %>
     <% (1..@sets).each do |sets| %>
-      <div class="col-md-3 panel panel-default">
-        <h2>Set <%=sets%></h2>
+      <div class="col-md-2 panel panel-default">
+        <h2 class="text-center">Set <%=sets%></h2>
         <% (1..@number_of_songs).each do |order| %>
           <select class="form-control" name="<%=sets%>,<%=order%>">
             <% @songs.each do |song| %>
@@ -23,6 +23,7 @@
       </div>
     <% end %>
   </div>
+  <input type="submit" value="Create Set List">
 </form>
 
 <!--
