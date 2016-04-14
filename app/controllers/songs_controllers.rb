@@ -29,3 +29,12 @@ patch '/songs/:id' do
     erb :"songs/edit"
   end
 end
+
+post '/songs/:id/deactivate' do
+  @song = Song.find_by_id(params['id'])
+  if @song.update_attributes(active: false)
+    redirect to("/songs/#{@song.id}")
+  else
+    erb :"songs/edit"
+  end
+end
