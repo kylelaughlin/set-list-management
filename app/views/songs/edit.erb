@@ -1,5 +1,11 @@
 <h1>Edit <%=@song.title%></h1>
 
+<% if @song.errors.any? %>
+  <% @song.errors.full_messages.each do |m| %>
+    <p>Error: <%=m%></p>
+  <% end %>
+<% end %>
+
 <form action="/songs/<%=@song.id%>" method="post">
   <input type="hidden" name="_method" value="patch">
   <div class="form-group">
@@ -19,5 +25,10 @@
   <% end %>
   <input type="submit" value="Update Song">
 </form>
-<a class="btn btn-primary" href="/songs/<%=@song.id%>/deactivate">Remove Song From Line Up</a>
+
+<% if @song.active %>
+  <a class="btn btn-primary" href="/songs/<%=@song.id%>/deactivate">Remove Song From Line Up</a>
+<% else %>
+  <a class="btn btn-primary" href="/songs/<%=@song.id%>/active">Add Song To Line Up</a>
+<% end %>
 <a class="btn btn-primary" href="/songs/<%=@song.id%>">Cancel Edit</a>

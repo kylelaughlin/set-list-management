@@ -6,7 +6,19 @@ get '/songs' do
 end
 
 get '/songs/new' do
-  @songs = Song.new
+  @song = Song.new
+  @band_members = BandMember.all
+  erb :"songs/new"
+end
+
+post '/songs' do
+  @song = Song.new(title: params['title'], artist: params['artist'])
+  if @song.save
+    @song.add_band_members(params)
+    redirect to("/songs")
+  else
+    erb :"songs/new"
+  end
 end
 
 get '/songs/:id' do
@@ -34,9 +46,18 @@ patch '/songs/:id' do
   end
 end
 
-post '/songs/:id/deactivate' do
+get '/songs/:id/deactivate' do
   @song = Song.find_by_id(params['id'])
   if @song.update_attributes(active: false)
+    redirect to("/songs/#{@song.id}")
+  else
+    erb :"songs/edit"
+  end
+end
+
+get '/songs/:id/active' do
+  @song = Song.find_by_id(params['id'])
+  if @song.update_attributes(active: true)
     redirect to("/songs/#{@song.id}")
   else
     erb :"songs/edit"

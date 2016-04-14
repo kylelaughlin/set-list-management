@@ -1,11 +1,5 @@
 <h1 class="text-center"><%= @song.title %></h1>
 
-<% if @song.errors.any? %>
-  <% @song.errors.full_messages.each do |m| %>
-    <p>Error: <%=m%></p>
-  <% end %>
-<% end %>
-  
 <div class="container">
   <div class="text-center">
     <p style="bold">Artist:</p>
@@ -14,6 +8,8 @@
     <% @band_members.each do |b| %>
       <p><%=b.name%>, <%=b.instrument%>
     <% end %>
+    <p>Status:<p>
+      <p><%= @song.active ? "Active" : "Not Active" %></p>
     <a class="btn btn-primary" href="/songs/<%=@song.id%>/edit">Edit Song</a>
   </div>
 </div>
