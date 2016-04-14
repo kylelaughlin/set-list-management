@@ -1,10 +1,23 @@
 <h1>Edit <%=@song.title%></h1>
 
-<form
-
-
-<form action="/set_lists/new" method="post">
+<form action="/songs/<%=@song.id%>" method="post">
+  <input type="hidden" name="_method" value="patch">
   <div class="form-group">
-    <label for="sets">Number of Sets:</label>
-    <input type="num" name="sets" class="form-control" id="sets">
+    <label for="title">Title:</lablel>
+    <input type="text" name="title" class="form-control" id="title" value="<%=@song.title%>">
   </div>
+  <div class="form-group">
+    <label for="artist">Artist:</lablel>
+    <input type="text" name="artist" class="form-control" id="artist" value="<%=@song.artist%>">
+  </div>
+  <p>Band Members:</p>
+  <% @band_members.each do |b| %>
+    <div class="checkbox">
+    <label><input type="checkbox" name="band_members[]" value="<%=b.id%>"
+      <%= @song_players.include?(b) ? 'checked' : '' %>><%=b.name%>, <%b.instrument%></label>
+    </div>
+  <% end %>
+  <input type="submit" value="Update Song">
+</form>
+
+<a class="btn btn-primary" href="/songs/<%=@song.id%>">Cancel Edit</a>
