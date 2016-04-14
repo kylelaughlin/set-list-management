@@ -5,6 +5,10 @@ get '/songs' do
   erb :"songs/index"
 end
 
+get '/songs/new' do
+  @songs = Song.new
+end
+
 get '/songs/:id' do
   @song = Song.find_by_id(params['id'])
   @band_members = @song.band_members
