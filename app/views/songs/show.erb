@@ -3,7 +3,7 @@
   <div class="text-center">
     <p style="bold">Artist:</p>
     <p><%=@song.artist%></p>
-    <p style="bold">Band Members</p>
+    <p style="bold">Band Members:</p>
     <% @band_members.each do |b| %>
       <p><%=b.name%>, <%=b.instrument%>
     <% end %>

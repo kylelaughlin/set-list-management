@@ -10,3 +10,8 @@ get '/songs/:id' do
   @band_members = @song.band_members
   erb :"songs/show"
 end
+
+get '/songs/:id/edit' do
+  @song = Song.find_by_id(params['id'])
+  erb :"songs/edit"
+end
