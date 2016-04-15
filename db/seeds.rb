@@ -4,6 +4,7 @@
 # You'll run it with rake db:seed
 
 #Create songs
+Song.create(title: "----", artist: "----")
 Song.create(title: "3 a.m.", artist: "Matchbox 20")
 Song.create(title: "American Band", artist: "Grand Funk Railroad")
 Song.create(title: "Any Way You Want It", artist: "Journey")
