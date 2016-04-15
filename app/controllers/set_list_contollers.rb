@@ -1,4 +1,9 @@
 
+get '/set_lists' do
+  @set_lists = SetList.all
+  erb :"set_lists/index"
+end
+
 get '/set_lists/new' do
   @set_list = SetList.new
   @venues = Venue.all
@@ -44,6 +49,20 @@ end
 get '/set_lists/:id' do
   @set_list = SetList.find_by_id(params['id'])
   @set_items = SetItem.where(set_list_id: params['id'])
-  binding.pry
   erb :"set_lists/show"
+end
+
+get '/set_lists/:id/edit' do
+  @set_list = SetList.find_by_id(params['id'])
+  @set_items = SetItem.where(set_list_id: params['id'])
+  @songs = Song.all
+  erb :"set_lists/edit"
+end
+
+delete '/set_lists/:id/delete' do
+  @set_list = SetList.find_by_id(params['id'])
+  @set_items = SetItem.where(set_list_id: @set_list.id)
+  @set_list.prepare_destruction(@set_items)
+  @set_list.destroy
+  redirect to("/set_lists")
 end

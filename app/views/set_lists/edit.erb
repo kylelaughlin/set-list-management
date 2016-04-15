@@ -1,0 +1,40 @@
+<h1 class="text-center">Edit <%=@set_list.venue.name%> - <%@set_list.performance_date%></h1>
+
+<div class="row">
+  <!-- Create offset based on how many sets -->
+  <% if @sets == 4 || @sets == 3 %>
+    <div class="col-md-1"> </div>
+  <% elsif @sets == 2 %>
+    <div class="col-md-3"> </div>
+  <% else %>
+    <div class="col-md-4"> </div>
+  <% end %>
+  <form action="set_lists/<%=@set_list.id%>" method="post">
+    <input type="hidden" name="_method" value="patch">
+    <% (1..@set_list.number_of_sets).each do |sets| %>
+      <div class="col-md-2 panel panel-default">
+        <h2 class="text-center">Set <%=sets%></h2>
+        <% (1..@set_list.songs_per_set).each do |order| %>
+          <select class="form-control" name="<%=sets%>,<%=order%>">
+            <% @songs.each do |song| %>
+              <% if @set_items.where(order: order, set: sets).first.song.id == song.id %>
+                <% selected = "selected" %>
+              <% else %>
+                <% selected = "" %>
+              <% end %>
+              <option value="<%=song.id%>" <%=selected%>><%=song.title%></option>
+            <% end %>
+          </select>
+        <% end %>
+      </div>
+    <% end %>
+    <input type="submit" class="btn btn-primary" value="Update Set List">
+  </form>
+</div>
+<form action="/set_lists/<%=@set_list.id%>/delete" method="post">
+  <div class="form-group">
+    <input type="hidden" name="_method" value="delete">
+    <input class="btn btn-primary" type="submit" value="Delete Set List">
+  </div>
+</form>
+<a class="btn btn-default" href="/set_lists/<%=@set_list.id%>">Cancel Set List Edit</a>
