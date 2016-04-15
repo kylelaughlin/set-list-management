@@ -17,3 +17,8 @@ post '/venues' do
     erb :"venues/new"
   end
 end
+
+get '/venues/:id' do
+  @venue = Venue.find_by_id(params['id'])
+  erb :"venues/show"
+end
