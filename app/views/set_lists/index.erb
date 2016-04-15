@@ -1,0 +1,21 @@
+<div class="container">
+  <h1 class="text-center">Set List Index</h1>
+  <hr>
+  <div class="row">
+    <div class="col-xs-6 text-center panel panel-default">
+      <h4>All Set Lists</h4>
+      <ul class="list-unstyled">
+        <% @set_lists.each do |set_list| %>
+          <li>
+            <a href="/set_lists/<%=set_list.id%>"><%=set_list.venue.name%> -
+            <%=set_list.performance_date%></a>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="col-xs-5 text-center">
+      <h4>Got a gig coming up? Create a new set list here.</h4>
+      <a class="btn btn-primary" href="set_lists/new">Create Set List</a>
+    </div>
+  </div>
+</div>
