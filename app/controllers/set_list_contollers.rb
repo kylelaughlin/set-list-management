@@ -66,3 +66,8 @@ delete '/set_lists/:id/delete' do
   @set_list.destroy
   redirect to("/set_lists")
 end
+
+get'/test' do
+  @songs = Song.all
+  erb :"set_lists/test"
+end

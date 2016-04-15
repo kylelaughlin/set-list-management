@@ -1,0 +1,17 @@
+<h1 class="text-center">Drag and Drop Test</h1>
+<hr>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6">
+      <ul id="sortable3" class="droptrue">
+      </ul>
+    </div>
+    <div class="col-xs-6">
+      <ul id="sortable1" class="droptrue">
+        <% @songs.each do |song| %>
+          <li class="ui-state-default" value="<%=song.id%>"><%=song.title%></li>
+        <% end %>
+      </ul>
+    </div>
+
+  </div>
