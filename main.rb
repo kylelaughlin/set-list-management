@@ -9,14 +9,11 @@ set :views, Proc.new {File.join(root, "app/views/")}
 enable :method_override
 
 get "/" do
+  @set_lists = SetList.order("performance_date").limit(5)
   erb :home
 end
 
 get "/pry" do
   binding.pry
   redirect to("/")
-end
-
-get "/test" do
-  erb :"songs/test"
 end

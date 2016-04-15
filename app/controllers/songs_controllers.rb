@@ -64,7 +64,9 @@ get '/songs/:id/active' do
   end
 end
 
-delete 'songs/:id/delete' do
+delete '/songs/:id/delete' do
   @song = Song.find_by_id(params['id'])
   @song.prepare_destruction
+  @song.destroy
+  redirect to("/songs")
 end
