@@ -15,7 +15,6 @@ get '/set_lists/new/:id' do
 end
 
 post '/set_lists/new/:id' do
-  binding.pry
   @set_list = SetList.find_by_id(params['id'])
   @set_list.create_set_item(params,params['id'])
   redirect to("set_lists/#{params['id']}")

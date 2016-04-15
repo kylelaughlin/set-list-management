@@ -22,3 +22,8 @@ get '/venues/:id' do
   @venue = Venue.find_by_id(params['id'])
   erb :"venues/show"
 end
+
+get '/venues/:id/edit' do
+  @venue = Venue.find_by_id(params['id'])
+  erb :"venues/edit"
+end
