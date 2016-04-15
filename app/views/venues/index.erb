@@ -2,6 +2,17 @@
   <h1 class="text-center">Venues Index</h1>
   <hr>
   <div class="row">
-    <div class="col-xs-6 text-center">
+    <div class="col-xs-6 text-center panel panel-default">
       <h4>All Venues</h4>
-      
+      <ul class="list-unstyled">
+        <% @venues.each do |v| %>
+          <li><a href="venues/<%=v.id%>"><%=v.name%></a></li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="col-xs-5 text-centered">
+      <h4>Playing a new venue? Add it here.</h4>
+      <a class="btn btn-primary" href="venues/new">Create New Venue</a>
+    </div>
+  </div>
+</div>
