@@ -51,3 +51,10 @@ get '/set_lists/:id' do
   @set_items = SetItem.where(set_list_id: params['id'])
   erb :"set_lists/show"
 end
+
+get '/set_lists/:id/edit' do
+  @set_list = SetList.find_by_id(params['id'])
+  @set_items = SetItem.where(set_list_id: params['id'])
+  @songs = Song.all
+  erb :"set_lists/edit"
+end

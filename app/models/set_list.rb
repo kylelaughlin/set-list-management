@@ -23,7 +23,6 @@ class SetList < ActiveRecord::Base
   #
   # Returns nil - writes to the database
   def create_set_item(params, set_list_id)
-    binding.pry
     (1..number_of_sets).each do |set|
       (1..songs_per_set).each do |song|
         key_match = "#{set},#{song}"
@@ -36,5 +35,10 @@ class SetList < ActiveRecord::Base
     end
   end
 
-
+  def delete_set_items
+    set_items = SetItem.where(set_list_id: id)
+    set_items.each do |set_item|
+      set_item.destroy
+    end
+  end
 end
