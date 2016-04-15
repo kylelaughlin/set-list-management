@@ -31,11 +31,11 @@
   margin-right: 10px;
   background: #eee;
   padding: 5px;
-  width: 143px;
+  width: 100%;
 }
 #sortable1 li, #sortable2 li, #sortable3 li {
   margin: 5px;
   padding: 5px;
   font-size: 1.2em;
-  width: 120px;
+  width: 100%;
 }
