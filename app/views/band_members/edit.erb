@@ -1,0 +1,26 @@
+<h1 class="text-center">Edit Band Member</h1>
+<hr>
+
+<% if @band_member.errors.any? %>
+  <% @band_member.errors.full_messages.each do |m| %>
+    <p>Errors: <%=m%></p>
+  <% end %>
+<% end %>
+
+<div class="edit-form-width">
+  <form action="/band_members/<%=@band_member.id%>" method="post">
+    <input type="hidden" name="_method" value="patch">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" name="name" class="form-control" id="name"
+        value="<%=@band_member.name%>">
+    </div>
+    <div class="form-group">
+      <label for="instrument">Instrument(s):</label>
+      <input type="text" name="instrument" class="form-control" id="instrument"
+        value="<%=@band_member.instrument%>">
+    </div>
+    <input class="btn btn-primary" type="submit" value="Update Band Member">
+  </form>
+  <a class="btn btn-default m-t-10" href="/band_members/<%=@band_member.id%>">Cancel Edit</a>
+</div>
