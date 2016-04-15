@@ -15,6 +15,7 @@ get '/set_lists/new/:id' do
 end
 
 post '/set_lists/new/:id' do
+  binding.pry
   @set_list = SetList.find_by_id(params['id'])
   @set_list.create_set_item(params,params['id'])
   redirect to("set_lists/#{params['id']}")
@@ -22,7 +23,7 @@ end
 
 post '/set_lists/new' do
   @sets = params['sets'].to_i
-  @songs = params['songs']
+  @songs = params['songs'].to_i
   @venues = Venue.all
 
   #break this into a helper class?
@@ -44,5 +45,6 @@ end
 get '/set_lists/:id' do
   @set_list = SetList.find_by_id(params['id'])
   @set_items = SetItem.where(set_list_id: params['id'])
+  binding.pry
   erb :"set_lists/show"
 end

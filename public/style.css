@@ -2,3 +2,8 @@
     float: none;
     margin: 0 auto;
 }
+
+.set-list-col {
+    float: left;
+    width: 25%;
+}

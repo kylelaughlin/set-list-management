@@ -16,3 +16,7 @@ get "/pry" do
   binding.pry
   redirect to("/")
 end
+
+get "/test" do
+  erb :"songs/test"
+end

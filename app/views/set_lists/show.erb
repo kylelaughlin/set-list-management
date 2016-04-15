@@ -1,27 +1,20 @@
 <h3><%=@set_list.venue.name%> - <%=@set_list.performance_date%></h3>
+
 <div class="row">
-  <div class="col-md-2 panel panel-default">
-    <p>Set One</p>
-    <% (1..10).each do |order|%>
-      <p><%=@set_items.where(order: order, set: 1).first.song.title%><p>
-    <% end %>
-  </div>
-  <div class="col-md-2 panel panel-default">
-    <p>Set Two</p>
-    <% (1..10).each do |order|%>
-      <p><%=@set_items.where(order: order, set: 2).first.song.title%><p>
-    <% end %>
-  </div>
-  <div class="col-md-2 panel panel-default">
-    <p>Set Three</p>
-    <% (1..10).each do |order|%>
-      <p><%=@set_items.where(order: order, set: 3).first.song.title%><p>
-    <% end %>
-  </div>
-  <div class="col-md-2 panel panel-default">
-    <p>Set Four</p>
-    <% (1..10).each do |order|%>
-      <p><%=@set_items.where(order: order, set: 4).first.song.title%><p>
-    <% end %>
-  </div>
+  <!-- Create offset based on how many sets -->
+  <% if @sets == 4 || @sets == 3 %>
+    <div class="col-md-1"> </div>
+  <% elsif @sets == 2 %>
+    <div class="col-md-3"> </div>
+  <% else %>
+    <div class="col-md-4"> </div>
+  <% end %>
+  <% (1..@set_list.number_of_sets).each do |sets| %>
+    <div class="col-md-2 panel panel-default">
+      <h2 class="text-center">Set <%=sets%></h2>
+      <% (1..@set_list.songs_per_set).each do |order| %>
+        <p><%= @set_items.where(order: order, set: sets).first.song.title%><p>
+      <% end %>
+    </div>
+  <% end %>
 </div>

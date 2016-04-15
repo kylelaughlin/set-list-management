@@ -16,7 +16,7 @@
         <% (1..@number_of_songs).each do |order| %>
           <select class="form-control" name="<%=sets%>,<%=order%>">
             <% @songs.each do |song| %>
-              <option value="<%song.id%>"><%=song.title%></option>
+              <option value="<%=song.id%>"><%=song.title%></option>
             <% end %>
           </select>
         <%end%>

@@ -23,8 +23,9 @@ class SetList < ActiveRecord::Base
   #
   # Returns nil - writes to the database
   def create_set_item(params, set_list_id)
-    (1..4).each do |set|
-      (1..10).each do |song|
+    binding.pry
+    (1..number_of_sets).each do |set|
+      (1..songs_per_set).each do |song|
         key_match = "#{set},#{song}"
         params.each do |k,v|
           if k == key_match

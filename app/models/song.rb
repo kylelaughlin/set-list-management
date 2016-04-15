@@ -35,4 +35,11 @@ class Song < ActiveRecord::Base
     end
   end
 
+  def prepare_destruction
+    song = Song.find_by_id(1)
+    SetItem.where(song_id: id).each do |set_item|
+      set_item.update_attributes(song: song)
+    end
+  end
+
 end

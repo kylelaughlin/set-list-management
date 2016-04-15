@@ -1,7 +1,7 @@
 #Songs Controllers
 
 get '/songs' do
-  @songs = Song.all.order('title')
+  @songs = Song.where(active: true).order('title')
   erb :"songs/index"
 end
 
@@ -66,5 +66,5 @@ end
 
 delete 'songs/:id/delete' do
   @song = Song.find_by_id(params['id'])
-  #set up the delete by removing its ids from places.....don't know how.
+  @song.prepare_destruction
 end
