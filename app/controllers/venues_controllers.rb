@@ -31,5 +31,6 @@ end
 get '/venues/:id/delete' do
   @venue = Venue.find_by_id(params['id'])
   @venue.prepare_destruction
-  
+  @venue.destroy
+  redirect to("/venues")
 end
