@@ -1,0 +1,9 @@
+<h1 class="text-center">Band Members</h1>
+
+<div class="container text-center">
+  <ul class="list-unstyled">
+    <% @band_members.each do |member| %>
+      <li><a href="/band_members/<%=member.id%>"><%=member.name%></a></li>
+    <% end %>
+  </ul>
+</div>
