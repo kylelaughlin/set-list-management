@@ -1,27 +1,30 @@
 <div class="container">
   <div class="text-center">
     <h1>Song & Set List Management</h1>
-  <div>
-  <div class="row">
-    <div class="col-md-6">
-      <div>
-        <p><a href="/set_lists" class="btn btn-primary">See all Set LIsts</a></p>
+    <hr>
+    <div class="row">
+      <div class="col-md-6">
+        <div>
+          <p><a href="/set_lists" class="btn btn-primary">See all Set LIsts</a></p>
+        </div>
+        <div class="panel panel-default">
+          <h4>Next Five Set Lists</h4>
+          <ul class="list-unstyled">
+            <% @set_lists.each do |set_list| %>
+            <li><a href="set_lists/<%=set_list.id%>"><%=set_list.venue.name%> <%=set_list.performance_date%></a></li>
+            <% end %>
+          </ul>
+        </div>
       </div>
-      <div class="panel panel-default">
-        <h4>Next Five Set Lists</h4>
-        <ul class="list-unstyled">
-        <% @set_lists.each do |set_list| %>
-          <li><a href="set_lists/<%=set_list.id%>"><%=set_list.venue.name%> <%=set_list.performance_date%></a></li>
-        <% end %>
-        </ul>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div style="width: 100%">
-        <a href="songs" class="btn btn-primary">Songs</a>
-      </div>
-      <div style="width: 100%">
-        <a href="band_members" class="btn btn-primary">Band Members</a>
+      <div class="col-md-6">
+        <div style="width: 100%">
+          <h4>See all songs</h4>
+          <a href="songs" class="btn btn-primary">Songs</a>
+        </div>
+        <div style="width: 100%">
+          <h4>See all band members</h4>
+          <a href="band_members" class="btn btn-primary">Band Members</a>
+        </div>
       </div>
     </div>
   </div>
