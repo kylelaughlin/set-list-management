@@ -27,3 +27,9 @@ get '/venues/:id/edit' do
   @venue = Venue.find_by_id(params['id'])
   erb :"venues/edit"
 end
+
+get '/venues/:id/delete' do
+  @venue = Venue.find_by_id(params['id'])
+  @venue.prepare_destruction
+  
+end

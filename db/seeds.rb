@@ -38,6 +38,7 @@ BandMember.create(name: "Jeff", instrument: "Guitar")
 BandMember.create(name: "Jon", instrument: "Vocals")
 
 #venues
+Venue.create(name: "----", address: "----")
 Venue.create(name: "Bob's Tavern", address: "6212 Havelock Ave, Lincoln, NE 68507")
 Venue.create(name: "The Garage", address: "5551 S 48th St, Lincoln, NE 68516")
 Venue.create(name: "Soaring Wings", address: "17111 S 138th St, Springfield, NE 68059")

@@ -5,5 +5,9 @@ class Venue < ActiveRecord::Base
   validates :name, presence: true
 
   has_many :set_lists
-  
+
+  def prepare_destruction
+    
+  end
+
 end
