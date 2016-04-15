@@ -1,28 +1,32 @@
-<h3><%=@set_list.venue.name%> - <%=@set_list.performance_date%></h3>
-
-<div class="row">
-  <!-- Create offset based on how many sets -->
-  <% if @sets == 4 || @sets == 3 %>
-    <div class="col-md-1"> </div>
-  <% elsif @sets == 2 %>
-    <div class="col-md-3"> </div>
-  <% else %>
-    <div class="col-md-4"> </div>
-  <% end %>
-  <% (1..@set_list.number_of_sets).each do |sets| %>
-    <div class="col-md-2 panel panel-default">
-      <h2 class="text-center">Set <%=sets%></h2>
-      <% (1..@set_list.songs_per_set).each do |order| %>
-        <p><%= @set_items.where(order: order, set: sets).first.song.title%><p>
-      <% end %>
+<div class="container text-center">
+  <h3><%=@set_list.venue.name%> - <%=@set_list.performance_date%></h3>
+  <hr>
+  <div class="row">
+    <!-- Create offset based on how many sets -->
+    <% if @sets == 4 || @sets == 3 %>
+      <div class="col-md-1"> </div>
+    <% elsif @sets == 2 %>
+      <div class="col-md-3"> </div>
+    <% else %>
+      <div class="col-md-4"> </div>
+    <% end %>
+    <% (1..@set_list.number_of_sets).each do |sets| %>
+      <div class="col-md-2 panel panel-default">
+        <h2 class="text-center">Set <%=sets%></h2>
+        <% (1..@set_list.songs_per_set).each do |order| %>
+          <p><%= @set_items.where(order: order, set: sets).first.song.title%><p>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <div class="row">
+    <div class="text-center" style="width: 100%;">
+      <p>
+        <a class="btn btn-primary" href="/set_lists/<%=@set_list.id%>/edit">Edit Set List</a>
+      </p>
+      <p>
+        <a class="btn btn-default" href="/set_lists">Back to Set List Index</a>
+      </p>
     </div>
-  <% end %>
-</div>
-<div class="text-center">
-  <p>
-    <a class="btn btn-primary" href="/set_lists/<%=@set_list.id%>/edit">Edit Set List</a>
-  </p>
-  <p>
-    <a class="btn btn-default" href="/set_lists">Back to Set List Index</a>
-  </p>
+  </div>
 </div>

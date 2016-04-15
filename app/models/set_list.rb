@@ -41,4 +41,11 @@ class SetList < ActiveRecord::Base
       set_item.destroy
     end
   end
+
+  def prepare_destruction(set_items)
+    set_items.each do |set_item|
+      set_item.destroy
+    end
+  end
+
 end
