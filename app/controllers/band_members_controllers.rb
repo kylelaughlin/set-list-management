@@ -17,6 +17,12 @@ post "/band_members" do
   end
 end
 
+delete "/band_members/:id" do
+  @band_member = BandMember.find_by_id(params['id'])
+  @band_member.destroy
+  redirect to("/band_members")
+end
+
 get "/band_members/:id" do
   @band_member = BandMember.find_by_id(params['id'])
   erb :"band_members/show"

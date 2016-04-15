@@ -3,7 +3,7 @@
 
 <% if @band_member.errors.any? %>
   <% @band_member.errors.full_messages.each do |m| %>
-    <p>Errors: <%=m%></p>
+    <p class="error text-center">Errors: <%=m%></p>
   <% end %>
 <% end %>
 
@@ -21,6 +21,10 @@
         value="<%=@band_member.instrument%>">
     </div>
     <input class="btn btn-primary" type="submit" value="Update Band Member">
+  </form>
+  <form action="/band_members/<%=@band_member.id%>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input class="btn btn-primary m-t-10" type="submit" value="Delete Band Member">
   </form>
   <a class="btn btn-default m-t-10" href="/band_members/<%=@band_member.id%>">Cancel Edit</a>
 </div>
