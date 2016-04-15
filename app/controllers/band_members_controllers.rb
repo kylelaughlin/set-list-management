@@ -3,6 +3,20 @@ get "/band_members" do
   erb :"band_members/index"
 end
 
+get "/band_members/new" do
+  @band_member = BandMember.new
+  erb :"band_members/new"
+end
+
+post "/band_members" do
+  @band_member = BandMember.new(name: params['name'], instrument: params['instrument'])
+  if @band_member.save
+    redirect to("/band_members")
+  else
+    erb :"band_members/new"
+  end
+end
+
 get "/band_members/:id" do
   @band_member = BandMember.find_by_id(params['id'])
   erb :"band_members/show"
