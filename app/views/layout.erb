@@ -20,12 +20,22 @@
     <script>
     $(function() {
       $( "ul.droptrue" ).sortable({
-        connectWith: "ul"
+        connectWith: "ul",
+        update: function(event, ui) {
+          if (this === ui.item.parent()[0]) {
+            alert("update!")
+          }
+        }
+
       });
 
       $( "#sortable1, #sortable2, #sortable3" ).disableSelection();
       });
-
+/*
+      $( "ul.droptrue" ).on( "sortupdate", function( event, ui ) {
+        alert("updated!")
+      } );
+/*
       $(document).ready(function() {
         $("#myList").sortable({
             stop: function(event, ui){
@@ -33,6 +43,7 @@
             }
         });
       });
+      */
     </script>
 
   </head>

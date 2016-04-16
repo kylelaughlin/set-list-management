@@ -22,8 +22,20 @@
   color: red;
 }
 
+.row-centered {
+    text-align:center;
+}
+.col-centered {
+    display:inline-block;
+    float:left;
+    /* reset the text-align */
+    text-align:left;
+    /* inline-block space fix */
+    margin-right:-4px;
+}
 
-#sortable1, #sortable2, #sortable3 {
+
+#set_1, #set_2, #set_3, #set_4, #songs {
   list-style-type: none;
   margin: 0;
   float:
@@ -33,7 +45,7 @@
   padding: 5px;
   width: 100%;
 }
-#sortable1 li, #sortable2 li, #sortable3 li {
+#set_1 li, #set_2 li, #set_3, #set_4, #songs li {
   margin: 5px;
   padding: 5px;
   font-size: 1.2em;

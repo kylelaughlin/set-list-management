@@ -19,11 +19,7 @@ get '/set_lists/new/:id' do
   erb :"set_lists/new_list"
 end
 
-post '/set_lists/new/:id' do
-  @set_list = SetList.find_by_id(params['id'])
-  @set_list.create_set_item(params,params['id'])
-  redirect to("set_lists/#{params['id']}")
-end
+
 
 post '/set_lists/new' do
   @sets = params['sets'].to_i
@@ -44,6 +40,12 @@ post '/set_lists/new' do
   else
     erb :"set_lists/new"
   end
+end
+
+post '/set_lists/:id' do
+  @set_list = SetList.find_by_id(params['id'])
+  @set_list.create_set_item(params,params['id'])
+  redirect to("set_lists/#{params['id']}")
 end
 
 get '/set_lists/:id' do
