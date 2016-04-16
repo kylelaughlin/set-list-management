@@ -23,13 +23,16 @@
         connectWith: "ul"
       });
 
-      $( "ul.dropfalse" ).sortable({
-        connectWith: "ul",
-        dropOnEmpty: false
+      $( "#sortable1, #sortable2, #sortable3" ).disableSelection();
       });
 
-      $( "#sortable1, #sortable2, #sortable3" ).disableSelection();
-    });
+      $(document).ready(function() {
+        $("#myList").sortable({
+            stop: function(event, ui){
+                //put your AJAX call here
+            }
+        });
+      });
     </script>
 
   </head>
