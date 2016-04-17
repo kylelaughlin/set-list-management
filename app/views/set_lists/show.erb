@@ -1,6 +1,33 @@
 <div class="container text-center">
   <h3><%=@set_list.venue.name%> - <%=@set_list.performance_date%></h3>
   <hr>
+  <div class="row row-centered">
+    <% if @sets == 4 %>
+      <% col_width = 2 %>
+    <% else %>
+      <% col_width = 3 %>
+    <% end %>
+    <% (1..@sets).each do |set| %>
+      <div class="col-xs-<%=col_width%> col-centered">
+        <h2 class="text-center">Set <%=set%></h2>
+        <ul id="set_<%=set%>" class="droptrue">
+        </ul>
+      </div>
+    <% end %>
+    <div class="col-xs-<%=col_width%> col-centered scroll">
+      <h2 class="text-center">Songs</h2>
+      <div>
+        <ul id="songs" class="droptrue">
+          <% @songs.each do |song| %>
+            <li id="<%=song.id%>"><%=song.title%></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+
   <div class="row">
     <!-- Create offset based on how many sets -->
     <% if @sets == 4 || @sets == 3 %>
