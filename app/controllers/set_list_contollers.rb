@@ -46,7 +46,6 @@ end
 post '/set_lists/new/sets' do
   @set_list = SetList.find_by_id(params['set_list_id'])
   @set_list.update_sets(params)
-  binding.pry
 end
 
 =begin
