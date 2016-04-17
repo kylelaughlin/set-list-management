@@ -24,7 +24,10 @@
     <a class="btn btn-primary m-t-10" href="/set_lists/<%=@set_list.id%>/edit">Edit Set List</a>
   </p>
   <p>
-    <a class="btn btn-danger" href="/set_lists/<%=@set_list.id%>/delte">Delete Set List</a>
+    <form action="/set_lists/<%=@set_list.id%>/delete" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <input type="submit" class="btn btn-danger" value="Delete Set List">
+    </form>
   </p>
   <p>
     <a class="btn btn-default" href="/set_lists">Back to Set Lists</a>

@@ -12,7 +12,6 @@ end
 
 get '/set_lists/new/:id' do
   @sets = params['sets'].to_i
-  @number_of_songs = params['songs'].to_i
   @songs = Song.all
   @venue = Venue.find_by_id(params['venue_id'])
   @set_list = SetList.find_by_id(params['id'])
@@ -23,7 +22,6 @@ end
 
 post '/set_lists/new' do
   @sets = params['sets'].to_i
-  @songs = params['songs'].to_i
   @venues = Venue.all
 
   #break this into a helper class?
@@ -33,10 +31,9 @@ post '/set_lists/new' do
   @set_list = SetList.new(name: params['name'],
                           performance_date: @date,
                           venue_id: params['venue_id'],
-                          number_of_sets: @sets,
-                          songs_per_set: @songs)
+                          number_of_sets: @sets)
   if @set_list.save
-    redirect to("/set_lists/new/#{@set_list.id}?sets=#{@sets}&songs=#{@songs}")
+    redirect to("/set_lists/new/#{@set_list.id}?sets=#{@sets}")
   else
     erb :"set_lists/new"
   end
