@@ -42,11 +42,19 @@ post '/set_lists/new' do
   end
 end
 
+#Handle AJAX calls to delete and rewrite the set items associated with each set in a set_list
+post '/set_lists/new/sets' do
+  binding.pry
+  @set_list = SetList.find_by_id(params['set_list_id'])
+end
+
+=begin
 post '/set_lists/:id' do
   @set_list = SetList.find_by_id(params['id'])
   @set_list.create_set_item(params,params['id'])
   redirect to("set_lists/#{params['id']}")
 end
+=end
 
 get '/set_lists/:id' do
   @set_list = SetList.find_by_id(params['id'])
