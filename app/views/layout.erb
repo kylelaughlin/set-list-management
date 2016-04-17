@@ -23,10 +23,12 @@
         connectWith: "ul",
         update: function(event, ui) {
           if(this.id !== "songs") {
+            var set_id = this.id
             var songs = $(this).children().map(function() {
               return this.id;
               }).toArray();
-            alert(songs)
+            var set_list_id = document.getElementsByClassName('set_list')[0].id
+            alert(set_id)
           }
             /*
             alert(ui.item.parent()[0].id)
