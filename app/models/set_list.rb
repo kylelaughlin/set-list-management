@@ -49,8 +49,6 @@ class SetList < ActiveRecord::Base
   end
 
   def update_sets(params)
-    binding.pry
-    set_items = SetItem.where(set: params['set_id'].to_i, set_list_id: id)
 
     #set the set_id form the params hash
     if params["set_id"] == "set_1"
@@ -64,7 +62,7 @@ class SetList < ActiveRecord::Base
     else
       set = 1
     end
-    binding.pry
+
 
     set_items = SetItem.where(set: set, set_list_id: id)
     #if There are already set items for this set in the set list, destroy them
@@ -77,7 +75,7 @@ class SetList < ActiveRecord::Base
     # if there are new songs for this set, create new set_items
     if params.key?("song_order")
       i = 1
-      binding.pry
+
       params[:song_order].each do |song_id|
         SetItem.create(order: i,
                        set: set,

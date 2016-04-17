@@ -21,6 +21,8 @@
     $(function() {
       $( "ul.droptrue" ).sortable({
         connectWith: "ul",
+        appendTo: "body",
+        helper: "clone",
         update: function(event, ui) {
           if(this.id !== "songs") {
             var set_id = this.id
