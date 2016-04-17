@@ -19,7 +19,7 @@
       <div>
         <ul id="songs" class="droptrue">
           <% @songs.each do |song| %>
-            <li id="song_<%=song.id%>"><%=song.title%></li>
+            <li id="<%=song.id%>"><%=song.title%></li>
           <% end %>
         </ul>
       </div>

@@ -22,9 +22,15 @@
       $( "ul.droptrue" ).sortable({
         connectWith: "ul",
         update: function(event, ui) {
-          if (this === ui.item.parent()[0]) {
-            alert("update!")
+          if(this.id !== "songs") {
+            var songs = $(this).children().map(function() {
+              return this.id;
+              }).toArray();
+            alert(songs)
           }
+            /*
+            alert(ui.item.parent()[0].id)
+            */
         }
 
       });
