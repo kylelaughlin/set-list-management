@@ -34,6 +34,8 @@ class SetList < ActiveRecord::Base
       end
     end
   end
+  ############### Can get rid of the method above I think####
+
 
   def delete_set_items
     set_items = SetItem.where(set_list_id: id)
@@ -84,6 +86,15 @@ class SetList < ActiveRecord::Base
         i += 1
       end
     end
+  end
+
+
+  def available_songs(set_items)
+    used_songs = []
+    set_items.each do |set_item|
+      used_songs << set_item.song_id
+    end
+    songs = Song.where('id NOT IN (?)',used_songs)
   end
 
 end

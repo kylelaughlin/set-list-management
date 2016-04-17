@@ -65,7 +65,8 @@ end
 get '/set_lists/:id/edit' do
   @set_list = SetList.find_by_id(params['id'])
   @set_items = SetItem.where(set_list_id: params['id'])
-  @songs = Song.all
+  @songs = @set_list.available_songs(@set_items)
+  binding.pry
   erb :"set_lists/edit"
 end
 

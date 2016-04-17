@@ -1,7 +1,44 @@
-<h1 class="text-center">Edit <%=@set_list.venue.name%> - <%@set_list.performance_date%></h1>
+<div class="container text-center">
+  <h1 class="text-center">Edit <%=@set_list.venue.name%> - <%@set_list.performance_date%></h1>
 
+  <div class="row row-centered">
+    <% if @sets == 4 %>
+      <% col_width = 2 %>
+    <% else %>
+      <% col_width = 3 %>
+    <% end %>
+    <% (1..@set_list.number_of_sets).each do |set| %>
+      <div class="col-xs-<%=col_width%> col-centered">
+        <h2 class="text-center">Set <%=set%></h2>
+        <ul id="set_<%=set%>" class="droptrue">
+          <% @set_items.where(set: set).order(:order).each do |set_item| %>
+            <li id="<%=set_item.song.id%>"><%=set_item.song.title%></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="col-xs-<%=col_width%> col-centered scroll">
+      <h2 class="text-center">Songs</h2>
+      <div>
+        <ul id="songs" class="droptrue">
+          <% @songs.each do |song| %>
+            <li id="<%=song.id%>"><%=song.title%></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="set_list" id="<%=@set_list.id%>"></div>
+</div>
+<div = class="container">
+  <p>
+    <a class="btn btn-primary m-t-10" href="/set_lists/<%=@set_list.id%>">Done Editing</a>
+  </p>
+</div>
+
+
+<!--
 <div class="row">
-  <!-- Create offset based on how many sets -->
   <% if @sets == 4 || @sets == 3 %>
     <div class="col-md-1"> </div>
   <% elsif @sets == 2 %>
