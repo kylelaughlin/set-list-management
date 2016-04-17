@@ -9,7 +9,6 @@ class SetList < ActiveRecord::Base
   validates :name, presence: true
   validates :performance_date, presence: true
   validates :number_of_sets, numericality: {less_than_or_equal_to: 4}
-  validates :songs_per_set, numericality: {greater_than: 0}
 
   has_many :set_items
   has_many :songs, through: :set_items
