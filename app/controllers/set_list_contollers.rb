@@ -14,7 +14,7 @@ end
 #new 2 of 2
 get '/set_lists/new/:id' do
   @sets = params['sets'].to_i
-  @songs = Song.where.not(id: 1)
+  @songs = Song.where.not(id: 1).order('title')
   @venue = Venue.find_by_id(params['venue_id'])
   @set_list = SetList.find_by_id(params['id'])
   erb :"set_lists/new_list"
