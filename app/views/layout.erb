@@ -31,11 +31,7 @@
             $(this).children().map(function() {
               songs.push(this.id);
               });
-              /*
-            $(this).children().map(function() {
-              return this.id;
-              }).toArray();
-*/
+
             var set_list_id = document.getElementsByClassName('set_list')[0].id;
 
             var postData = {set_list_id: set_list_id, set_id: set_id, song_order: songs};
@@ -47,28 +43,14 @@
             });
 
           }
-            /*
-            alert(ui.item.parent()[0].id)
-            */
+
         }
 
       });
 
       $( "#sortable1, #sortable2, #sortable3" ).disableSelection();
       });
-/*
-      $( "ul.droptrue" ).on( "sortupdate", function( event, ui ) {
-        alert("updated!")
-      } );
-/*
-      $(document).ready(function() {
-        $("#myList").sortable({
-            stop: function(event, ui){
-                //put your AJAX call here
-            }
-        });
-      });
-      */
+
     </script>
 
   </head>
