@@ -5,6 +5,11 @@ get '/songs' do
   erb :"songs/index"
 end
 
+get '/songs/inactive' do
+  @songs = Song.where(active: false).order('title')
+  erb :"songs/index_inactive"
+end
+
 get '/songs/new' do
   @song = Song.new
   @band_members = BandMember.all
