@@ -1,0 +1,10 @@
+<div class="container text-center">
+  <h1>Inactive Songs</h1>
+  <hr>
+
+  <h4>All Inactive Songs</h4>
+  <% @songs.each do |s| %>
+    <p><a href="/songs/<%=s.id%>"><%=s.title%></a><p>
+  <% end %>
+  <a class="btn btn-default" href="/songs">Back to Active Songs Index</a>
+</div>
