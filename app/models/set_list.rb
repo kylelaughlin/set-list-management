@@ -96,4 +96,9 @@ class SetList < ActiveRecord::Base
     songs = Song.where('id NOT IN (?)',used_songs)
   end
 
+  def create_date_object(date_string)
+    date_parts = date_string.split("-")
+    Date.new(date_parts[0].to_i,date_parts[1].to_i,date_parts[2].to_i)
+  end
+
 end
