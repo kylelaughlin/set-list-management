@@ -1,6 +1,6 @@
 
 get '/venues' do
-  @venues = Venue.all
+  @venues = Venue.where.not(id: 1)
   erb :"venues/index"
 end
 
