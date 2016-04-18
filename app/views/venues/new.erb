@@ -1,12 +1,12 @@
-<div class="container">
-  <h1 class="text-centered">Create New Venue</h1>
-
+<div class="container text-center">
+  <h1>Create New Venue</h1>
+  <hr>
   <% if @venue.errors.any? %>
     <% @venue.errors.full_messages.each do |m| %>
-      <p>Error: <%=m%></p>
+      <p class="error">Error: <%=m%></p>
     <% end %>
   <% end %>
-  
+
   <div class="edit-form-width">
     <form action="/venues" method="post">
       <div class="form-group">
@@ -21,5 +21,6 @@
       </div>
       <input class="btn btn-primary" type="submit" value="Create Venue">
     </form>
+    <a class="btn btn-default m-t-10" href="/venues">Cancel New Venue</a>
   </div>
 </div>

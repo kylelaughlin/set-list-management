@@ -28,6 +28,15 @@ get '/venues/:id/edit' do
   erb :"venues/edit"
 end
 
+patch '/venues/:id' do
+  @venue = Venue.find_by_id(params['id'])
+  if @venue.update_attributes(name: params['name'], address: params['address'])
+    redirect to("/venues/#{@venue.id}")
+  else
+    erb :"venues/edit"
+  end
+end
+
 get '/venues/:id/delete' do
   @venue = Venue.find_by_id(params['id'])
   @venue.prepare_destruction
