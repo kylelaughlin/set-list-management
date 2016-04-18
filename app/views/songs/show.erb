@@ -1,15 +1,23 @@
-<h1 class="text-center"><%= @song.title %></h1>
-
-<div class="container">
-  <div class="text-center">
-    <p style="bold">Artist:</p>
+<div class="container text-center">
+  <h1 class="text-center"><%= @song.title %></h1>
+  <hr>
+  <div class="container">
+    <p><b>Artist:</b></p>
     <p><%=@song.artist%></p>
-    <p style="bold">Band Members:</p>
+    <p><b>Band Members:</b></p>
+    <% if @band_members.empty? %>
+      <p>None</p>
+    <% end %>
     <% @band_members.each do |b| %>
       <p><%=b.name%>, <%=b.instrument%>
     <% end %>
-    <p>Status:<p>
-      <p><%= @song.active ? "Active" : "Not Active" %></p>
-    <a class="btn btn-primary" href="/songs/<%=@song.id%>/edit">Edit Song</a>
+    <p><b>Status:</b><p>
+    <p><%= @song.active ? "Active" : "Not Active" %></p>
+    <p>
+      <a class="btn btn-primary" href="/songs/<%=@song.id%>/edit">Edit Song</a>
+    </p>
+    <p>
+      <a class="btn btn-default" href="/songs">Back To All Songs</a>
+    </p>
   </div>
 </div>

@@ -1,16 +1,18 @@
-<h1>Songs</h1>
-
-<div class="container">
-<div class="row">
-  <div class="col-xs-6 panel panel-default text-center">
-    <h4>All Active Songs</h4>
-    <% @songs.each do |s| %>
-      <p><a href="/songs/<%=s.id%>"><%=s.title%></a><p>
-    <% end %>
+<div class="container text-center">
+  <h1>Songs</h1>
+  <hr>
+  <div class="row">
+    <div class="col-xs-6 panel panel-default text-center">
+      <h4>All Active Songs</h4>
+      <% @songs.each do |s| %>
+        <p><a href="/songs/<%=s.id%>"><%=s.title%></a><p>
+      <% end %>
+    </div>
+    <div class="col-xs-5 text-center">
+      <h4>Learn a new song? Add it here.</h4>
+      <a class="btn btn-primary" href="/songs/new">New Song</a>
+      <h4>See all inactive songs here.</h4>
+      <a class="btn btn-primary" href="/songs/inactive">Inactive Songs</a>
+    </div>
   </div>
-  <div class="col-xs-5 text-center">
-    <h4>Learn a new song? Add it here.</h4>
-    <a class="btn btn-primary" href="/songs/new">New Song</a>
-  </div>
-</div>
 </div>
