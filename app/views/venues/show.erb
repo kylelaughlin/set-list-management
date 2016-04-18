@@ -3,5 +3,10 @@
   <hr>
   <h4><%=@venue.name%></h4>
   <p><%=@venue.address%></p>
-  <a class="btn btn-primary" href="/venues/<%=@venue.id%>/edit">Edit Venue</a>
+  <p>
+    <a class="btn btn-primary" href="/venues/<%=@venue.id%>/edit">Edit Venue</a>
+  </p>
+  <p>
+    <a class="btn btn-default" href="/venues">Back to All Venues</a>
+  </p>
 </div>
