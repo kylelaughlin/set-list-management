@@ -1,26 +1,29 @@
-<h1>Create New Song</h1>
-
-<% if @song.errors.any? %>
-  <% @song.errors.full_messages.each do |m| %>
-    <p>Error: <%=m%></p>
+<div class="container text-center">
+  <h1>Create New Song</h1>
+  <hr>
+  <% if @song.errors.any? %>
+    <% @song.errors.full_messages.each do |m| %>
+      <p>Error: <%=m%></p>
+    <% end %>
   <% end %>
-<% end %>
 
-<form action="/songs" method="post">
-  <div class="form-group">
-    <label for="title">Title:</lablel>
-    <input type="text" name="title" class="form-control" id="title" placeholder="Enter song title">
-  </div>
-  <div class="form-group">
-    <label for="artist">Artist:</lablel>
-    <input type="text" name="artist" class="form-control" id="artist" placeholder="Enter song artist">
-  </div>
-  <p>Band Members:</p>
-  <% @band_members.each do |b| %>
-    <div class="checkbox">
-    <label><input type="checkbox" name="band_members[]" value="<%=b.id%>">
-      <%=b.name%>, <%b.instrument%></label>
+  <form action="/songs" method="post">
+    <div class="form-group">
+      <label for="title">Title:</lablel>
+      <input type="text" name="title" class="form-control" id="title" placeholder="Enter song title">
     </div>
-  <% end %>
-  <input type="submit" value="Create Song">
-</form>
+    <div class="form-group">
+      <label for="artist">Artist:</lablel>
+      <input type="text" name="artist" class="form-control" id="artist" placeholder="Enter song artist">
+    </div>
+    <p>Band Members:</p>
+    <% @band_members.each do |b| %>
+      <div class="checkbox">
+      <label><input type="checkbox" name="band_members[]" value="<%=b.id%>">
+        <%=b.name%>, <%b.instrument%></label>
+      </div>
+    <% end %>
+    <input class="btn btn-primary" type="submit" value="Create Song">
+  </form>
+  <a class="btn btn-default m-t-10" href="/songs">Cancel New Song</a>
+</div>
