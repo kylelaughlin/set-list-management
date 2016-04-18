@@ -6,7 +6,7 @@ end
 
 get '/set_lists/new' do
   @set_list = SetList.new
-  @venues = Venue.all
+  @venues = Venue.where.not(id: 1)
   erb :"set_lists/new"
 end
 
@@ -22,7 +22,7 @@ end
 
 post '/set_lists/new' do
   @sets = params['sets'].to_i
-  @venues = Venue.all
+  @venues = Venue.where.not(id: 1)
 
   #break this into a helper class?
   date_parts = params['date'].split("-")
