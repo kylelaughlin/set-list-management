@@ -14,7 +14,7 @@ end
 #new 2 of 2
 get '/set_lists/new/:id' do
   @sets = params['sets'].to_i
-  @songs = Song.all
+  @songs = Song.where.not(id: 1)
   @venue = Venue.find_by_id(params['venue_id'])
   @set_list = SetList.find_by_id(params['id'])
   erb :"set_lists/new_list"
@@ -39,7 +39,6 @@ end
 
 #Handle AJAX calls to delete and rewrite the set items associated with each set in a set_list
 post '/set_lists/new/sets' do
-  binding.pry
   @set_list = SetList.find_by_id(params['set_list_id'])
   @set_list.update_sets(params)
 end
