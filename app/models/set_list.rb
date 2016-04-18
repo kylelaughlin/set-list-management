@@ -14,91 +14,83 @@ class SetList < ActiveRecord::Base
   has_many :songs, through: :set_items
   belongs_to :venue
 
-  # Creates SetItem records according to the key value pairs of the params hash
+  # Destroys SetItem records that are associated with a set list
   #
-  # +params: a hash representing key value pairs from the set list form
-  # =>        key is structured "1,3" which represents the third song of the first set
-  # =>        value is the id of the associated song records
+  # +set_items: an array of set_items assocated with a set list-style-type
   #
-  # Returns nil - writes to the database
-  def create_set_item(params, set_list_id)
-    (1..number_of_sets).each do |set|
-      (1..songs_per_set).each do |song|
-        key_match = "#{set},#{song}"
-        params.each do |k,v|
-          if k == key_match
-            SetItem.create(order: song, set: set, song_id: params[key_match], set_list_id: set_list_id)
-          end
-        end
-      end
-    end
-  end
-  ############### Can get rid of the method above I think####
-
-
-  def delete_set_items
-    set_items = SetItem.where(set_list_id: id)
-    set_items.each do |set_item|
-      set_item.destroy
-    end
-  end
-
+  # Returns the array of set_items that were deleted
   def prepare_destruction(set_items)
     set_items.each do |set_item|
       set_item.destroy
     end
   end
 
+  # Updates a set's SetItem records by deleting any and re-building
+  #
+  # +params: a hash representing the data supplied from the web request
+  #
+  # Returns nil
   def update_sets(params)
-
     #set the set_id form the params hash
-    if params["set_id"] == "set_1"
-      set = 1
-    elsif params["set_id"] == "set_2"
-      set = 2
-    elsif params["set_id"] == "set_3"
-      set = 3
-    elsif params["set_id"] == "set_4"
-      set = 4
-    else
-      set = 1
-    end
-
-
+    set = determine_set_id(params["set_id"])
     set_items = SetItem.where(set: set, set_list_id: id)
     #if There are already set items for this set in the set list, destroy them
     if !set_items.empty?
-      set_items.each do |set_item|
-        set_item.destroy
-      end
+      prepare_destruction(set_items)
     end
-
-    # if there are new songs for this set, create new set_items
+    # if the set list is not empty, create new set items for the set
     if params.key?("song_order")
-      i = 1
-
-      params[:song_order].each do |song_id|
-        SetItem.create(order: i,
-                       set: set,
-                       song_id: song_id,
-                       set_list_id: params["set_list_id"].to_i)
-        i += 1
-      end
+      create_set_items(params, set)
     end
   end
 
+  # Assigns an integer set id from the string set_id from the params hash
+  #
+  # +set_id: the string representation of the set id from the params hash
+  #
+  # Returns an integer represetning the set being updated
+  def determine_set_id(set_id)
+    if set_id == "set_1"
+      set = 1
+    elsif set_id == "set_2"
+      set = 2
+    elsif set_id == "set_3"
+      set = 3
+    elsif set_id == "set_4"
+      set = 4
+    else
+      ""
+    end
+    set
+  end
 
+  # Create all SetItem records for a set
+  #
+  # +params: a hash representing the data supplied from the web request
+  #
+  # Returns the song_order array from the params hash
+  def create_set_items(params, set)
+    i = 1
+    params[:song_order].each do |song_id|
+      SetItem.create(order: i,
+                     set: set,
+                     song_id: song_id,
+                     set_list_id: params["set_list_id"].to_i)
+      i += 1
+    end
+  end
+
+  # Creates an array of Song objects that have not already been used in a set list-style-type
+  #
+  # +set_items: SetItem objects that have already been used in a set_4
+  #
+  # Returns an array of Song objects that are still available to be used in a set list
   def available_songs(set_items)
     used_songs = []
     set_items.each do |set_item|
       used_songs << set_item.song_id
     end
     songs = Song.where('id NOT IN (?)',used_songs)
-  end
-
-  def create_date_object(date_string)
-    date_parts = date_string.split("-")
-    Date.new(date_parts[0].to_i,date_parts[1].to_i,date_parts[2].to_i)
   end
 
 end
