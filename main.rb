@@ -13,3 +13,7 @@ get "/" do
   @set_lists = SetList.where("performance_date > ?", Date.today).order("performance_date").limit(5)
   erb :home
 end
+
+get "/test" do
+  erb :"venues/test"
+end
