@@ -15,5 +15,6 @@ get "/" do
 end
 
 get "/test" do
-  erb :"venues/test"
+  @songs = Song.all
+  erb :"set_lists/test"
 end
