@@ -10,7 +10,7 @@
     <div class="col-xs-6">
       <ul id="sortable1" class="droptrue" style="background-color: #F4F4F4;">
         <% @songs.each do |song| %>
-          <li class="ui-state-default" value="<%=song.id%>"><%=song.title%></li>
+          <li class="ui-state-default" value="<%=song.id%>"><span class="handle">@@@</span><%=song.title%></li>
         <% end %>
       </ul>
     </div>

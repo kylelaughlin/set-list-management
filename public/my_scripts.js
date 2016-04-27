@@ -3,6 +3,7 @@ $(function() {
     connectWith: "ul",
     appendTo: "body",
     helper: "clone",
+    handle: ".handle",
     update: function(event, ui) {
       if(this.id !== "songs") {
         var set_id = this.id
