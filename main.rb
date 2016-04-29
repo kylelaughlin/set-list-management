@@ -1,3 +1,4 @@
+require "pry"
 require "sinatra"
 require "sinatra/activerecord"
 require "sinatra/reloader"
@@ -17,4 +18,9 @@ end
 get "/test" do
   @songs = Song.all
   erb :"set_lists/test"
+end
+
+get "/pry" do
+  binding.pry
+  erb :home
 end
