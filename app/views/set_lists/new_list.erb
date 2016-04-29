@@ -12,36 +12,41 @@
   <div class="lists-container">
     <!-- Container for songs and set lists -->
     <div class="set scroll">
-      <h3 class="text-center">Set One</h3>
+      <h3 class="text-center set-header">Set One</h3>
       <ul id="set_1" class="droptrue">
-        <p>Drag Here</p>
+        <p class="drag-prompt text-center"><em>drag here...</em></p>
       </ul>
     </div>
     <div class="set scroll">
-      <h3 class="text-center">Set Two</h3>
+      <h3 class="text-center set-header">Set Two</h3>
       <ul id="set_2" class="droptrue">
+        <p class="drag-prompt text-center"><em>drag here...</em></p>
       </ul>
     </div>
     <div class="set scroll">
-      <h3 class="text-center">Set Three</h3>
+      <h3 class="text-center set-header">Set Three</h3>
       <ul id="set_3" class="droptrue">
+        <p class="drag-prompt text-center"><em>drag here...</em></p>
       </ul>
     </div>
     <div class="set scroll">
-      <h3 class="text-center">Set Four</h3>
+      <h3 class="text-center set-header">Set Four</h3>
       <ul id="set_4" class="droptrue">
+        <p class="drag-prompt text-center"><em>drag here...</em></p>
       </ul>
     </div>
-    <div class="set scroll">
-      <h3 class="text-center">Songs</h3>
-      <ul id="songs" class="droptrue">
-        <% @songs.each do |song| %>
-          <li id="<%=song.id%>" class="song clearfix">
-            <img src="/music-menu.png" class="handle">
-            <div class="song-name"><%=song.title%></div>
-          </li>
-        <% end %>
-      </ul>
+    <div class="set">
+      <h3 class="text-center set-header">Songs</h3>
+      <div class="songs-wrapper scroll">
+        <ul id="songs" class="droptrue">
+          <% @songs.each do |song| %>
+            <li id="<%=song.id%>" class="song clearfix">
+              <img src="/music-menu.png" class="handle">
+              <div class="song-name"><%=song.title%></div>
+            </li>
+          <% end %>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
