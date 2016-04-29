@@ -1,6 +1,9 @@
+
+
+
 $(function() {
   $( "ul.droptrue" ).sortable({
-    connectWith: "ul",
+    connectWith: ".droptrue",
     appendTo: "body",
     handle: ".handle",
     helper: function(event,$item){
@@ -8,6 +11,9 @@ $(function() {
         return $helper.append($item.clone());
     },
     update: function(event, ui) {
+
+      $(this).parent().children("p").addClass("hidden");
+
       if(this.id !== "songs") {
         var set_id = this.id
 
