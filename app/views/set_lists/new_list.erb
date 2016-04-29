@@ -1,4 +1,53 @@
 <div class="container">
+  <header>
+    <div class="header">
+      <!-- semi transparent bar accross top.  Logo and Create set list and cancel buttons -->
+      <p>Header</p>
+    </div>
+  </header>
+  <div class="set-info-wrapper">
+    <!-- Form to create set name and date -->
+    <p>set info</p>
+  </div>
+  <div class="lists-container">
+    <!-- Container for songs and set lists -->
+    <div class="set scroll">
+      <h3 class="text-center">Set One</h3>
+      <ul id="set_1" class="droptrue">
+        <p>Drag Here</p>
+      </ul>
+    </div>
+    <div class="set scroll">
+      <h3 class="text-center">Set Two</h3>
+      <ul id="set_2" class="droptrue">
+      </ul>
+    </div>
+    <div class="set scroll">
+      <h3 class="text-center">Set Three</h3>
+      <ul id="set_3" class="droptrue">
+      </ul>
+    </div>
+    <div class="set scroll">
+      <h3 class="text-center">Set Four</h3>
+      <ul id="set_4" class="droptrue">
+      </ul>
+    </div>
+    <div class="set scroll">
+      <h3 class="text-center">Songs</h3>
+      <ul id="songs" class="droptrue">
+        <% @songs.each do |song| %>
+          <li id="<%=song.id%>" class="song clearfix">
+            <img src="/music-menu.png" class="handle">
+            <div class="song-name"><%=song.title%></div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!--
+<div class="container">
   <h1 class="text-center">Create Set Lists</h1>
   <hr>
   <div class="row row-centered">
@@ -19,7 +68,7 @@
       <div>
         <ul id="songs" class="droptrue">
           <% @songs.each do |song| %>
-            <li id="<%=song.id%>"><span class="handle">[]</span><%=song.title%></li>
+            <li id="<%=song.id%>"><%=song.title%></li>
           <% end %>
         </ul>
       </div>
@@ -36,7 +85,6 @@
 
 
 
-<!--
 <form action="/set_lists/new/<%=@set_list.id%>" method="post">
 <div class = "row">
   <div class="col-md-2 panel panel-default">

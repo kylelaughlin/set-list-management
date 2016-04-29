@@ -2,8 +2,11 @@ $(function() {
   $( "ul.droptrue" ).sortable({
     connectWith: "ul",
     appendTo: "body",
-    helper: "clone",
     handle: ".handle",
+    helper: function(event,$item){
+        var $helper = $('<ul></ul>').addClass('drag-style');
+        return $helper.append($item.clone());
+    },
     update: function(event, ui) {
       if(this.id !== "songs") {
         var set_id = this.id

@@ -39,27 +39,3 @@
     /* inline-block space fix */
     margin-right:-4px;
 }
-
-
-#set_1, #set_2, #set_3, #set_4, #songs {
-  list-style-type: none;
-  margin: 0;
-  float:
-  left;
-  margin-right: 10px;
-  background: #eee;
-  padding: 5px;
-  width: 100%;
-}
-#set_1 li, #set_2 li, #set_3 li, #set_4 li, #songs li {
-  margin: 5px;
-  padding: 5px;
-  font-size: 1.2em;
-  width: 100%;
-  border-style: groove;
-}
-
-.scroll {
-  overflow-y: scroll;
-  height: 450px;
-  }
