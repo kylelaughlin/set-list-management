@@ -1,5 +1,26 @@
+window.addEventListener("load", function() {
+  var addSetButton = document.getElementById("new-set-button");
+  addSetButton.addEventListener("click", addSet);
+});
 
+//On page load one set is displayed
+var setsDisplayed = 1
 
+function addSet() {
+
+  if(setsDisplayed === 1){
+    var newSet = document.getElementById("set-2");
+    newSet.classList.remove("hidden");
+  } else if(setsDisplayed === 2){
+    var newSet = document.getElementById("set-3");
+    newSet.classList.remove("hidden");
+  } else if(setsDisplayed === 3){
+    var newSet = document.getElementById("set-4");
+    newSet.classList.remove("hidden");
+    this.classList.add("hidden");
+  };
+  setsDisplayed++;
+};
 
 $(function() {
   $( "ul.droptrue" ).sortable({

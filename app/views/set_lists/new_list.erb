@@ -2,38 +2,48 @@
   <header>
     <div class="header">
       <!-- semi transparent bar accross top.  Logo and Create set list and cancel buttons -->
-      <p>Header</p>
+      <h1 class="head-name text-center">Band List</h1>
     </div>
   </header>
   <div class="set-info-wrapper">
     <!-- Form to create set name and date -->
-    <p>set info</p>
+    <input class="gig-input" type="text" placeholder="Where is your gig?">
+    <input type="date" name="date" class="date-input" id="date">
   </div>
   <div class="lists-container">
     <!-- Container for songs and set lists -->
-    <div class="set scroll">
-      <h3 class="text-center set-header">Set Two</h3>
-      <ul id="set_1" class="droptrue">
-        <p class="drag-prompt text-center"><em>drag here...</em></p>
-      </ul>
+    <div class="set" id="set-1">
+      <p class="remove-set-button">x</p>
+      <h3 class="text-center set-header">Set One</h3>
+      <div class="songs-wrapper scroll">
+        <ul id="set_1" class="droptrue">
+        </ul>
+        <p class="drag-prompt text-center"><em>drag here</em></p>
+      </div>
     </div>
-    <div class="set scroll">
+    <div class="set hidden" id="set-2">
       <h3 class="text-center set-header">Set Two</h3>
-      <ul id="set_2" class="droptrue">
-      </ul>
-      <p class="drag-prompt text-center"><em>drag here...</em></p>
+      <div class="songs-wrapper scroll">
+        <ul id="set_2" class="droptrue">
+        </ul>
+        <p class="drag-prompt text-center"><em>drag here</em></p>
+      </div>
     </div>
-    <div class="set scroll">
+    <div class="set hidden" id="set-3">
       <h3 class="text-center set-header">Set Three</h3>
-      <ul id="set_3" class="droptrue">
-
-      </ul>
+      <div class="songs-wrapper scroll">
+        <ul id="set_3" class="droptrue">
+        </ul>
+        <p class="drag-prompt text-center"><em>drag here</em></p>
+      </div>
     </div>
-    <div class="set scroll">
+    <div class="set hidden" id="set-4">
       <h3 class="text-center set-header">Set Four</h3>
-      <ul id="set_4" class="droptrue">
-        <p class="drag-prompt text-center"><em>drag here...</em></p>
-      </ul>
+      <div class="songs-wrapper scroll">
+        <ul id="set_4" class="droptrue">
+        </ul>
+        <p class="drag-prompt text-center"><em>drag here</em></p>
+      </div>
     </div>
     <div class="set">
       <h3 class="text-center set-header">Songs</h3>
@@ -41,13 +51,21 @@
         <ul id="songs" class="droptrue">
           <% @songs.each do |song| %>
             <li id="<%=song.id%>" class="song clearfix">
-              <img src="/music-menu.png" class="handle">
+              <div class="handle">
+                <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+              </div>
               <div class="song-name"><%=song.title%></div>
             </li>
           <% end %>
         </ul>
       </div>
     </div>
+    <div>
+      <p class="new-set-button" id="new-set-button">+</p>
+    </div>
   </div>
   <div class="set_list" id="<%=@set_list.id%>"></div>
 </div>
+
+<!--Icon made by FreePik from www.flaticon.com -->
