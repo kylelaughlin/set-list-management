@@ -11,65 +11,123 @@ window.addEventListener("load", function() {
 //On page load one set is displayed
 var setsDisplayed = 1
 
+//Facilitate adding a set when button pushed
 function addSet() {
   if(setsDisplayed === 1){
-    var newSet = document.getElementById("set-2");
-    newSet.classList.remove("hidden");
-    var removeSetButton = document.getElementById("remove-2");
-    removeSetButton.classList.remove("hidden");
+    addSetTwo();
   } else if(setsDisplayed === 2){
-    var newSet = document.getElementById("set-3");
-    newSet.classList.remove("hidden");
-    var removeSetButton = document.getElementById("remove-3");
-    removeSetButton.classList.remove("hidden");
-    var removeSetButton = document.getElementById("remove-2");
-    removeSetButton.classList.add("hidden");
+    addSetThree();
   } else if(setsDisplayed === 3){
-    var newSet = document.getElementById("set-4");
-    newSet.classList.remove("hidden");
-    this.classList.add("hidden");
-    var removeSetButton = document.getElementById("remove-4");
-    removeSetButton.classList.remove("hidden");
-    var removeSetButton = document.getElementById("remove-3");
-    removeSetButton.classList.add("hidden");
+    addSetFour(this);
   };
   setsDisplayed++;
 };
 
+//Add set two when only one set is displayed
+function addSetTwo() {
+  //Un hide set two
+  var newSet = document.getElementById("set-2");
+  newSet.classList.remove("hidden");
+  //un hide the set two remove set button
+  var removeSetButton = document.getElementById("remove-2");
+  removeSetButton.classList.remove("hidden");
+};
+
+//Add set three when only two sets are displayed
+function addSetThree() {
+  //Un-hide set three
+  var newSet = document.getElementById("set-3");
+  newSet.classList.remove("hidden");
+  //Un-hide the set three remove set button
+  var removeSetButton = document.getElementById("remove-3");
+  removeSetButton.classList.remove("hidden");
+  //Hide the set two remove set button
+  var removeSetButton = document.getElementById("remove-2");
+  removeSetButton.classList.add("hidden");
+};
+
+//Add set four when only three sets are displayed
+function addSetFour(element) {
+  //Un-hide set four
+  var newSet = document.getElementById("set-4");
+  newSet.classList.remove("hidden");
+  //Hide the add set list button
+  element.classList.add("hidden");
+  //Un-hide the set four remove set list button
+  var removeSetButton = document.getElementById("remove-4");
+  removeSetButton.classList.remove("hidden");
+  //Hide the set three remove set list button
+  var removeSetButton = document.getElementById("remove-3");
+  removeSetButton.classList.add("hidden");
+};
+
+//Facilitate Removing a set when remove set list button is clicked
 function removeSet() {
   if(setsDisplayed === 4){
-    var removeSetList = document.getElementById("set_4");
-    if(removeSetList.getElementsByTagName("li").length === 0){
-      var set = document.getElementById("set-4");
-      set.classList.add("hidden");
-      var removeSetButton = document.getElementById("remove-3");
-      removeSetButton.classList.remove("hidden");
-      var newSetButton = document.getElementById("new-set-button");
-      newSetButton.classList.remove("hidden");
-    } else {
-      alert("The set must be empty to remove it.")
-    }
+    removeSetFour();
   } else if(setsDisplayed === 3){
-    var removeSetList = document.getElementById("set_3");
-    if(removeSetList.getElementsByTagName("li").length === 0){
-      var set = document.getElementById("set-3");
-      set.classList.add("hidden");
-      var removeSetButton = document.getElementById("remove-2");
-      removeSetButton.classList.remove("hidden");
-    } else {
-      alert("The set must be empty to remove it.")
-    };
+    removeSetThree();
   } else if(setsDisplayed === 2){
-    var removeSetList = document.getElementById("set_2");
-    if(removeSetList.getElementsByTagName("li").length === 0){
-      var set = document.getElementById("set-2");
-      set.classList.add("hidden");
-    } else {
-      alert("The set must be empty to remove it.")
-    };
+    removeSetTwo();
   };
   setsDisplayed--;
 };
+
+//Removes set four from display
+function removeSetFour() {
+  var removeSetList = document.getElementById("set_4");
+  //If set list has songs then it can not be removed
+  if(removeSetList.getElementsByTagName("li").length === 0){
+    //Hide set four
+    var set = document.getElementById("set-4");
+    set.classList.add("hidden");
+    //Show set three remove set list button
+    var removeSetButton = document.getElementById("remove-3");
+    removeSetButton.classList.remove("hidden");
+    //Show add new set list button
+    var newSetButton = document.getElementById("new-set-button");
+    newSetButton.classList.remove("hidden");
+  } else {
+    //Display message that set list must be empty
+    removeSetAlert ();
+  };
+};
+
+//Removes set three from display
+function removeSetThree() {
+  var removeSetList = document.getElementById("set_3");
+  //If set list has songs then it can not be removed
+  if(removeSetList.getElementsByTagName("li").length === 0){
+    //Hide set three
+    var set = document.getElementById("set-3");
+    set.classList.add("hidden");
+    //Show set two remove set list button
+    var removeSetButton = document.getElementById("remove-2");
+    removeSetButton.classList.remove("hidden");
+  } else {
+    //Display message that set list must be empty
+    removeSetAlert ();
+  };
+};
+
+//Removes set two from display
+function removeSetTwo() {
+  var removeSetList = document.getElementById("set_2");
+  //If set list has songs then it can not be removed
+  if(removeSetList.getElementsByTagName("li").length === 0){
+    //Hide set two
+    var set = document.getElementById("set-2");
+    set.classList.add("hidden");
+  } else {
+    //Display message that set list must be empty
+    removeSetAlert ();
+  };
+};
+
+//Displays a message that set list must be empty
+function removeSetAlert() {
+  alert("The set must be empty to remove it.");
+}
 
 $(function() {
   $( "ul.droptrue" ).sortable({
