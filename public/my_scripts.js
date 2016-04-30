@@ -1,25 +1,74 @@
 window.addEventListener("load", function() {
   var addSetButton = document.getElementById("new-set-button");
   addSetButton.addEventListener("click", addSet);
+
+  var removeSetButtons = document.getElementsByClassName("remove-set-button");
+  for(var i = 0; i < removeSetButtons.length; i++){
+    removeSetButtons[i].addEventListener("click", removeSet);
+  };
 });
 
 //On page load one set is displayed
 var setsDisplayed = 1
 
 function addSet() {
-
   if(setsDisplayed === 1){
     var newSet = document.getElementById("set-2");
     newSet.classList.remove("hidden");
+    var removeSetButton = document.getElementById("remove-2");
+    removeSetButton.classList.remove("hidden");
   } else if(setsDisplayed === 2){
     var newSet = document.getElementById("set-3");
     newSet.classList.remove("hidden");
+    var removeSetButton = document.getElementById("remove-3");
+    removeSetButton.classList.remove("hidden");
+    var removeSetButton = document.getElementById("remove-2");
+    removeSetButton.classList.add("hidden");
   } else if(setsDisplayed === 3){
     var newSet = document.getElementById("set-4");
     newSet.classList.remove("hidden");
     this.classList.add("hidden");
+    var removeSetButton = document.getElementById("remove-4");
+    removeSetButton.classList.remove("hidden");
+    var removeSetButton = document.getElementById("remove-3");
+    removeSetButton.classList.add("hidden");
   };
   setsDisplayed++;
+};
+
+function removeSet() {
+  if(setsDisplayed === 4){
+    var removeSetList = document.getElementById("set_4");
+    if(removeSetList.getElementsByTagName("li").length === 0){
+      var set = document.getElementById("set-4");
+      set.classList.add("hidden");
+      var removeSetButton = document.getElementById("remove-3");
+      removeSetButton.classList.remove("hidden");
+      var newSetButton = document.getElementById("new-set-button");
+      newSetButton.classList.remove("hidden");
+    } else {
+      alert("The set must be empty to remove it.")
+    }
+  } else if(setsDisplayed === 3){
+    var removeSetList = document.getElementById("set_3");
+    if(removeSetList.getElementsByTagName("li").length === 0){
+      var set = document.getElementById("set-3");
+      set.classList.add("hidden");
+      var removeSetButton = document.getElementById("remove-2");
+      removeSetButton.classList.remove("hidden");
+    } else {
+      alert("The set must be empty to remove it.")
+    };
+  } else if(setsDisplayed === 2){
+    var removeSetList = document.getElementById("set_2");
+    if(removeSetList.getElementsByTagName("li").length === 0){
+      var set = document.getElementById("set-2");
+      set.classList.add("hidden");
+    } else {
+      alert("The set must be empty to remove it.")
+    };
+  };
+  setsDisplayed--;
 };
 
 $(function() {
