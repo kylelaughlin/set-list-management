@@ -1,11 +1,17 @@
 window.addEventListener("load", function() {
+  //Add Event listener to the new set button
   var addSetButton = document.getElementById("new-set-button");
   addSetButton.addEventListener("click", addSet);
 
+  //Add Event listeners to the remove set buttons
   var removeSetButtons = document.getElementsByClassName("remove-set-button");
   for(var i = 0; i < removeSetButtons.length; i++){
     removeSetButtons[i].addEventListener("click", removeSet);
   };
+
+  //Add Event Listener to the date picker
+  var dateInput = document.getElementById("date");
+  date.addEventListener("change", dateChanged);
 });
 
 //On page load one set is displayed
@@ -70,7 +76,7 @@ function removeSet() {
   } else if(setsDisplayed === 2){
     removeSetTwo();
   };
-  setsDisplayed--;
+
 };
 
 //Removes set four from display
@@ -87,10 +93,12 @@ function removeSetFour() {
     //Show add new set list button
     var newSetButton = document.getElementById("new-set-button");
     newSetButton.classList.remove("hidden");
+    setsDisplayed--;
   } else {
     //Display message that set list must be empty
     removeSetAlert ();
   };
+
 };
 
 //Removes set three from display
@@ -104,6 +112,7 @@ function removeSetThree() {
     //Show set two remove set list button
     var removeSetButton = document.getElementById("remove-2");
     removeSetButton.classList.remove("hidden");
+    setsDisplayed--;
   } else {
     //Display message that set list must be empty
     removeSetAlert ();
@@ -118,6 +127,7 @@ function removeSetTwo() {
     //Hide set two
     var set = document.getElementById("set-2");
     set.classList.add("hidden");
+    setsDisplayed--;
   } else {
     //Display message that set list must be empty
     removeSetAlert ();
@@ -127,6 +137,11 @@ function removeSetTwo() {
 //Displays a message that set list must be empty
 function removeSetAlert() {
   alert("The set must be empty to remove it.");
+}
+
+function dateChanged() {
+  this.classList.remove("empty-date");
+  this.removeEventListener("change", dateChanged);
 }
 
 $(function() {
