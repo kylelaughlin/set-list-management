@@ -72,7 +72,7 @@ get '/set_lists/:id/edit' do
 end
 
 #delete
-delete '/set_lists/:id/delete' do
+get '/set_lists/:id/delete' do
   @set_list = SetList.find_by_id(params['id'])
   @set_items = SetItem.where(set_list_id: @set_list.id)
   @set_list.prepare_destruction(@set_items)

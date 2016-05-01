@@ -71,5 +71,13 @@
   </div>
   <div class="set_list" id="<%=@set_list.id%>"></div>
 </div>
+<div class="modal-background hidden" id="cancel-modal-background">
+  <div class="cancel-modal hidden" id="cancel-modal">
+    <p>Are you sure you want remove this set list?</p>
+      <a href="/set_lists/<%=@set_list.id%>/delete" class="cancel-modal-button" id="confirm-cancel">Yes, remove this set list</a>
+      <p class="cancel-modal-button" id="refute-cancel">No, continue crafting this set list.</p>
+  </div>
+</div>
+
 
 <!--Icon made by FreePik from www.flaticon.com -->

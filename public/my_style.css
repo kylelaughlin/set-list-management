@@ -148,6 +148,39 @@ li.gig-display:hover {
 
 .container {
   height: 100%;
+  position: relative;
+}
+
+.modal-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 100;
+}
+
+.cancel-modal {
+  position: absolute;
+  top: 40%;
+  left: 38%;
+  background-color: #eee;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.cancel-modal-button {
+  padding: 5px 15px 5px 15px;
+  background-color: #428BCA;
+  border-radius: 5px;
+  margin: 10px;
+  color: #FFF;
+  font-weight: lighter;
+}
+
+.cancel-modal-button {
+  cursor: pointer;
 }
 
 .background-img {

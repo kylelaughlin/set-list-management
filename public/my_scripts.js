@@ -17,9 +17,13 @@ window.addEventListener("load", function() {
   var saveButton = document.getElementById("save-set-list-button");
   saveButton.addEventListener("click", saveSetList);
 
-  //Add Event Listner to cancel-set-list-button
+  //Add Event Listner to display cancel modal
   var cancelButton = document.getElementById("cancel-set-list-button");
   cancelButton.addEventListener("click", cancelSetList);
+
+  //Add Event Listener to refute cancel set list
+  var refuteCancel = document.getElementById("refute-cancel");
+  refuteCancel.addEventListener("click", hideCancelModal);
 });
 
 //On page load one set is displayed
@@ -153,25 +157,17 @@ function dateChanged() {
   this.removeEventListener("change", dateChanged);
 }
 
+//Facilitate Saving Set List
 function saveSetList() {
   //Check for venue title and date selection
   if (checkGigDate() && checkGigTitle()){
-    var venue = document.getElementById("gig-title").value;
-    var performance_date = document.getElementById("date").value;
-    var set_list_id = document.getElementsByClassName('set_list')[0].id;
-    var postData = {set_list_id: set_list_id, venue: venue, performance_date: performance_date}
-    $.ajax({
-      method: 'post',
-      url: '/set_lists/new',
-      data: postData
-    });
+    sendSaveListRequest()
   } else {
     alert("Need title and date - make better");
   };
-
-  //Save to database with ajax
 };
 
+//Checks if a gig venue was typed into the text input
 function checkGigTitle(){
   var valid = false;
   var gigTitle = document.getElementById("gig-title");
@@ -181,6 +177,7 @@ function checkGigTitle(){
   return valid;
 };
 
+//Checks if a date was inputed into the date picker
 function checkGigDate() {
   var valid = false;
   var gigDate = document.getElementById("date");
@@ -190,8 +187,36 @@ function checkGigDate() {
   return valid;
 };
 
-function cancelSetList() {
+//Sends post request to save set list
+function sendSaveListRequest() {
+  var venue = document.getElementById("gig-title").value;
+  var performance_date = document.getElementById("date").value;
+  var set_list_id = document.getElementsByClassName('set_list')[0].id;
+  var postData = {set_list_id: set_list_id, venue: venue, performance_date: performance_date}
+  $.ajax({
+    method: 'post',
+    url: '/set_lists/new',
+    data: postData
+  });
+}
 
+//Display Modal asking user to confirm cancel of set list
+function cancelSetList() {
+  //show darkened background
+  var cancelBackground = document.getElementById("cancel-modal-background");
+  cancelBackground.classList.remove("hidden");
+  //Show confirmation modal
+  var cancelModal = document.getElementById("cancel-modal");
+  cancelModal.classList.remove("hidden");
+};
+
+function hideCancelModal() {
+  //hide darkened background
+  var cancelBackground = document.getElementById("cancel-modal-background");
+  cancelBackground.classList.add("hidden");
+  //hide confirmation modal
+  var cancelModal = document.getElementById("cancel-modal");
+  cancelModal.classList.add("hidden");
 }
 
 $(function() {
