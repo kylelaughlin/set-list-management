@@ -65,6 +65,22 @@ body {
   padding: 20px;
 }
 
+.set-list-item {
+  display: block;
+  border-style: solid;
+  border-color: #F1F1F1;
+  border-width: 1px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  width: 70%;
+  margin: auto;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+.upcoming-wrapper {
+  width: 50%;
+}
+
 /* SetList Index */
 .flex-center {
   display: flex;

@@ -22,9 +22,19 @@ get '/set_lists/new/:id' do
   erb :"set_lists/new"
 end
 
+post '/set_lists/new' do
+  @venue = params['venue']
+  @performance_date = params['performance_date']
+  @set_list = SetList.find_by_id(params['set_list_id'].to_i)
+  if @set_list.update_attributes(venue: @venue, performance_date: @performance_date)
+    redirect to("/")
+  else
+
+  end
+end
 #dont need this post request
 #create set list object record
-post '/set_lists/new' do
+post '/set_lists/new---old' do
   @sets = params['sets'].to_i
   @venues = Venue.where.not(id: 1)
   date_parts = params['date'].split("-")

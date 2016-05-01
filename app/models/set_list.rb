@@ -1,14 +1,14 @@
 #name :string representing the name of the venue
 #description :text representing notes for the set list
 #performance_date: date representing the date of the performance
-#number_of_sets: an integer representing the number of sets in a given setlist
-#songs_per_set: the number of songs in each set
+
+
 
 class SetList < ActiveRecord::Base
 
   has_many :set_items
   has_many :songs, through: :set_items
-  belongs_to :venue
+
 
   # Destroys SetItem records that are associated with a set list
   #

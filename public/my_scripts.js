@@ -156,9 +156,13 @@ function dateChanged() {
 function saveSetList() {
   //Check for venue title and date selection
   if (checkGigDate() && checkGigTitle()){
+    var venue = document.getElementById("gig-title").value;
+    var performance_date = document.getElementById("date").value;
+    var set_list_id = document.getElementsByClassName('set_list')[0].id;
+    var postData = {set_list_id: set_list_id, venue: venue, performance_date: performance_date}
     $.ajax({
       method: 'post',
-      url: '/set_lists/new/sets',
+      url: '/set_lists/new',
       data: postData
     });
   } else {

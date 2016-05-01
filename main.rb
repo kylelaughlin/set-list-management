@@ -22,5 +22,4 @@ end
 
 get "/pry" do
   binding.pry
-  erb :home
 end

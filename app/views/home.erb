@@ -11,9 +11,11 @@
     </nav>
   </div>
   <div class="content-wrapper">
-    <h3>Upcoming Shows</h3>
-    <% @set_lists.each do |set_list| %>
-      <a href="/set_lists/<%=set_list.id%>" class="set-list-item"><%=set_List.venue%></a>
-    <% end %>
+    <div class="upcoming-wrapper text-center">
+      <h3>Upcoming Shows</h3>
+      <% @set_lists.each do |set_list| %>
+        <a href="/set_lists/<%=set_list.id%>" class="set-list-item"><%=set_list.venue%> <%=set_list.performance_date%></a>
+      <% end %>
+    </div>
   </div>
 </div>
