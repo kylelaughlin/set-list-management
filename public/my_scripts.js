@@ -12,6 +12,14 @@ window.addEventListener("load", function() {
   //Add Event Listener to the date picker
   var dateInput = document.getElementById("date");
   date.addEventListener("change", dateChanged);
+
+  //Add Event Listener to save-set-list-button click
+  var saveButton = document.getElementById("save-set-list-button");
+  saveButton.addEventListener("click", saveSetList);
+
+  //Add Event Listner to cancel-set-list-button
+  var cancelButton = document.getElementById("cancel-set-list-button");
+  cancelButton.addEventListener("click", cancelSetList);
 });
 
 //On page load one set is displayed
@@ -137,11 +145,49 @@ function removeSetTwo() {
 //Displays a message that set list must be empty
 function removeSetAlert() {
   alert("The set must be empty to remove it.");
-}
+};
 
+//Changes date picker font from grey default to white font
 function dateChanged() {
   this.classList.remove("empty-date");
   this.removeEventListener("change", dateChanged);
+}
+
+function saveSetList() {
+  //Check for venue title and date selection
+  if (checkGigDate() && checkGigTitle()){
+    $.ajax({
+      method: 'post',
+      url: '/set_lists/new/sets',
+      data: postData
+    });
+  } else {
+    alert("Need title and date - make better");
+  };
+
+  //Save to database with ajax
+};
+
+function checkGigTitle(){
+  var valid = false;
+  var gigTitle = document.getElementById("gig-title");
+  if(gigTitle.value.length > 0){
+    valid = true;
+  };
+  return valid;
+};
+
+function checkGigDate() {
+  var valid = false;
+  var gigDate = document.getElementById("date");
+  if(gigDate.value.length > 0){
+    valid = true;
+  };
+  return valid;
+};
+
+function cancelSetList() {
+
 }
 
 $(function() {

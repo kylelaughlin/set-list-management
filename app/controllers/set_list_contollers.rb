@@ -7,19 +7,21 @@ end
 #new 1 of 2
 get '/set_lists/new' do
   @set_list = SetList.new
-  @venues = Venue.where.not(id: 1)
-  erb :"set_lists/new"
+  if @set_list.save
+    redirect to("/set_lists/new/#{@set_list.id}")
+  else
+    redirect to("/set_lists")
+  end
 end
 
 #new 2 of 2
 get '/set_lists/new/:id' do
-  @sets = params['sets'].to_i
   @songs = Song.where.not(id: 1).order('title')
-  @venue = Venue.find_by_id(params['venue_id'])
   @set_list = SetList.find_by_id(params['id'])
-  erb :"set_lists/new_list"
+  erb :"set_lists/new"
 end
 
+#dont need this post request
 #create set list object record
 post '/set_lists/new' do
   @sets = params['sets'].to_i
