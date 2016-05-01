@@ -25,6 +25,12 @@ window.addEventListener("load", function() {
   var refuteCancel = document.getElementById("refute-cancel");
   refuteCancel.addEventListener("click", hideCancelModal);
 
+  var upcomingGigTab = document.getElementById("upcoming-tab");
+  upcomingGigTab.addEventListener("click", showUpcomingGigs);
+
+  var pastGigTab = document.getElementById("past-tab");
+  pastGigTab.addEventListener("click", showPastGigs);
+
   initializeSetsDisplayed()
 });
 
@@ -243,6 +249,34 @@ function hideCancelModal() {
   //hide confirmation modal
   var cancelModal = document.getElementById("cancel-modal");
   cancelModal.classList.add("hidden");
+};
+
+function showUpcomingGigs() {
+  //make upcoming gigs active tab
+  this.classList.add("active-gig-display");
+  //de-activate past gigs tab
+  var pastGigsTab = document.getElementById("past-tab");
+  pastGigsTab.classList.remove("active-gig-display");
+  //hide past gigs list
+  var pastGigsList = document.getElementById("past");
+  pastGigsList.classList.add("hidden");
+  //show upcoming gigs list
+  var upcomingGigsList = document.getElementById("upcoming");
+  upcomingGigsList.classList.remove("hidden");
+}
+
+function showPastGigs() {
+  //make past gigs active tab
+  this.classList.add("active-gig-display");
+  //de-activate upcoming gigs tab
+  var upcomingGigsTab = document.getElementById("upcoming-tab");
+  upcomingGigsTab.classList.remove("active-gig-display");
+  //hide upcoming gigs list
+  var upcomingGigsList = document.getElementById("upcoming");
+  upcomingGigsList.classList.add("hidden");
+  //show past gigs list
+  var pastGigsList = document.getElementById("past");
+  pastGigsList.classList.remove("hidden");
 }
 
 $(function() {

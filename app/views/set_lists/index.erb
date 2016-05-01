@@ -5,13 +5,21 @@
   <div class="content-wrapper flex-center">
     <div class="list-wrapper">
       <ul class="selection-list">
-        <li class="gig-display active-gig-display">Upcoming</li>
-        <li class="gig-display">Past</li>
+        <li class="gig-display active-gig-display" id="upcoming-tab">Upcoming</li>
+        <li class="gig-display" id="past-tab">Past</li>
       </ul>
       <div class="gig-container text-center">
-        <div id="upcoming">
+        <div id="upcoming" class="">
           <h3>Upcoming Gigs</h3>
           <% @set_lists_upcoming.each do |set_list| %>
+            <a href="/set_lists/<%=set_list.id%>" class="set-list-item">
+              <%=set_list.venue%> <%=set_list.performance_date%>
+            </a>
+          <% end %>
+        </div>
+        <div id="past" class="hidden">
+          <h3>Past Gigs</h3>
+          <% @set_lists_past.each do |set_list| %>
             <a href="/set_lists/<%=set_list.id%>" class="set-list-item">
               <%=set_list.venue%> <%=set_list.performance_date%>
             </a>
@@ -25,3 +33,11 @@
     </div>
   </div>
 </div>
+<div id="new-set-button" class="hidden"></div>
+<div id="date" class="hidden"></div>
+<div id="save-set-list-button" class="hidden"></div>
+<div id="cancel-set-list-button" class="hidden"></div>
+<div id="refute-cancel" class="hidden"></div>
+<div id="set-4" class="hidden"></div>
+<div id="set-3" class="hidden"></div>
+<div id="set-2" class="hidden"></div>
