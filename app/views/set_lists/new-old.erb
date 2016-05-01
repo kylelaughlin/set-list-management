@@ -1,0 +1,34 @@
+<div class="container text-center">
+  <h1 class="text-center">Create New Set List</h1>
+  <hr>
+  <% if @set_list.errors.any? %>
+    <% @set_list.errors.full_messages.each do |m| %>
+      <p class="error"> Error: <%=m%><p>
+    <% end %>
+  <% end %>
+
+  <div style="width: 300px;margin: auto; align: auto;" class="text-center">
+    <form action="/set_lists/new" method="post">
+      <div class="form-group">
+        <label for="sets">Number of Sets: <em>(must be 4 or less)<em></label>
+        <input type="num" name="sets" class="form-control" id="sets">
+      </div>
+      <label for="venue">Select a Venue:</label>
+      <select id="venue" class="form-control" name="venue_id">
+        <% @venues.each do |v| %>
+          <option value="<%= v.id %>"><%= v.name %></option>
+        <% end %>
+      </select>
+      <div class="form-group">
+        <label for="name">Set List Name:</label>
+        <input type="text" name="name" class="form-control" id="name">
+      </div>
+      <div class="form-group">
+        <label for="date">Performance Date:</label>
+        <input type="date" name="date" class="form-control" id="date">
+      </div>
+      <input class="btn btn-primary" type="submit" value="Create Set List">
+    </form>
+  </div>
+  <a href="/set_lists" class="btn btn-default m-t-10">Cancel New Set List</a>
+</div>
