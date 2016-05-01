@@ -24,7 +24,30 @@ window.addEventListener("load", function() {
   //Add Event Listener to refute cancel set list
   var refuteCancel = document.getElementById("refute-cancel");
   refuteCancel.addEventListener("click", hideCancelModal);
+
+  initializeSetsDisplayed()
 });
+
+function initializeSetsDisplayed() {
+  var setFour = document.getElementById("set-4");
+  var setThree = document.getElementById("set-3");
+  var setTwo = document.getElementById("set-2");
+  if(!(setFour.classList.contains("hidden"))){
+    var removeButton = document.getElementById("remove-4");
+    removeButton.classList.remove("hidden");
+    var newSetButton = document.getElementById("new-set-button");
+    newSetButton.classList.add("hidden");
+    setsDisplayed = 4;
+  } else if(!(setThree.classList.contains("hidden"))) {
+    var removeButton = document.getElementById("remove-3");
+    removeButton.classList.remove("hidden");
+    setsDisplayed = 3;
+  } else if(!(setTwo.classList.contains("hidden"))) {
+    var removeButton = document.getElementById("remove-2");
+    removeButton.classList.remove("hidden");
+    setsDisplayed = 2;
+  };
+}
 
 //On page load one set is displayed
 var setsDisplayed = 1
@@ -196,7 +219,10 @@ function sendSaveListRequest() {
   $.ajax({
     method: 'post',
     url: '/set_lists/new',
-    data: postData
+    data: postData,
+    success: function(){
+        window.location.assign("/set_lists")
+    }
   });
 }
 

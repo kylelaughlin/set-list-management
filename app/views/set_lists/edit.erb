@@ -1,37 +1,115 @@
-<div class="container text-center">
-  <h1 class="text-center">Edit <%=@set_list.venue.name%> - <%=@set_list.performance_date%></h1>
-  <hr>
-  <div class="row row-centered">
-    <% if @sets == 4 %>
-      <% col_width = 2 %>
-    <% else %>
-      <% col_width = 3 %>
-    <% end %>
-    <% (1..@set_list.number_of_sets).each do |set| %>
-      <div class="col-xs-<%=col_width%> col-centered">
-        <h2 class="text-center">Set <%=set%></h2>
-        <ul id="set_<%=set%>" class="droptrue">
-          <% @set_items.where(set: set).order(:order).each do |set_item| %>
-            <li id="<%=set_item.song.id%>"><%=set_item.song.title%></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-    <div class="col-xs-<%=col_width%> col-centered scroll">
-      <h2 class="text-center">Songs</h2>
-      <div>
-        <ul id="songs" class="droptrue">
-          <% @songs.each do |song| %>
-            <li id="<%=song.id%>"><%=song.title%></li>
+<div class="container background-img">
+  <header>
+    <div class="header">
+      <!-- semi transparent bar accross top.  Logo and Create set list and cancel buttons -->
+      <h1 class="head-name">Band List</h1>
+      <p class="cancel-set-list-button" id="cancel-set-list-button">Delete Set List</p>
+      <p class="save-set-list-button" id="save-set-list-button">Save Set List</p>
+    </div>
+  </header>
+  <div class="set-info-wrapper">
+    <!-- Form to create set name and date -->
+    <input class="gig-input" type="text" placeholder="Where is your gig?" id="gig-title" value="<%=@set_list.venue%>">
+    <input type="date" name="date" class="date-input" id="date" value="<%=@set_list.performance_date%>">
+  </div>
+  <div class="lists-container">
+    <!-- Container for songs and set lists -->
+    <div class="set" id="set-1">
+      <h3 class="text-center set-header">Set One</h3>
+      <div class="songs-wrapper scroll">
+        <ul id="set_1" class="droptrue song-list-style">
+          <% @set_1_songs.each do |set_item| %>
+            <li id="<%=set_item.song.id%>" class="song clearfix">
+              <div class="handle">
+                <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+              </div>
+              <div class="song-name"><%=set_item.song.title%></div>
+            </li>
           <% end %>
         </ul>
       </div>
     </div>
+    <div class="set <%="hidden" if @set_2_songs.empty?%>" id="set-2">
+      <p class="remove-set-button hidden" id="remove-2">x</p>
+      <h3 class="text-center set-header">Set Two</h3>
+      <div class="songs-wrapper scroll">
+        <ul id="set_2" class="droptrue song-list-style">
+          <% @set_2_songs.each do |set_item| %>
+            <li id="<%=set_item.song.id%>" class="song clearfix">
+              <div class="handle">
+                <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+              </div>
+              <div class="song-name"><%=set_item.song.title%></div>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    <div class="set <%="hidden" if @set_3_songs.empty?%>" id="set-3">
+      <p class="remove-set-button hidden" id="remove-3">x</p>
+      <h3 class="text-center set-header">Set Three</h3>
+      <div class="songs-wrapper scroll">
+        <ul id="set_3" class="droptrue song-list-style">
+          <% @set_3_songs.each do |set_item| %>
+            <li id="<%=set_item.song.id%>" class="song clearfix">
+              <div class="handle">
+                <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+              </div>
+              <div class="song-name"><%=set_item.song.title%></div>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    <div class="set <%="hidden" if @set_4_songs.empty?%>" id="set-4">
+      <p class="remove-set-button hidden" id="remove-4">x</p>
+      <h3 class="text-center set-header">Set Four</h3>
+      <div class="songs-wrapper scroll">
+        <ul id="set_4" class="droptrue song-list-style">
+          <% @set_4_songs.each do |set_item| %>
+            <li id="<%=set_item.song.id%>" class="song clearfix">
+              <div class="handle">
+                <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+              </div>
+              <div class="song-name"><%=set_item.song.title%></div>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    <div class="set">
+      <h3 class="text-center set-header">Songs</h3>
+      <div class="songs-wrapper scroll">
+        <ul id="songs" class="droptrue song-list-style">
+          <% @songs.each do |song| %>
+            <li id="<%=song.id%>" class="song clearfix">
+              <div class="handle">
+                <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+              </div>
+              <div class="song-name"><%=song.title%></div>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <p class="new-set-button" id="new-set-button">+</p>
+    </div>
   </div>
   <div class="set_list" id="<%=@set_list.id%>"></div>
 </div>
-<div = class="container">
-  <p>
-    <a class="btn btn-primary m-t-10" href="/set_lists/<%=@set_list.id%>">Done Editing</a>
-  </p>
+<div class="modal-background hidden" id="cancel-modal-background">
+  <div class="cancel-modal hidden" id="cancel-modal">
+    <p>Are you sure you want delete this set list?</p>
+      <a href="/set_lists/<%=@set_list.id%>/delete" class="cancel-modal-button" id="confirm-cancel">Yes, delete this set list</a>
+      <p class="cancel-modal-button" id="refute-cancel">No, continue editing this set list.</p>
+  </div>
 </div>
+
+
+<!--Icon made by FreePik from www.flaticon.com -->
