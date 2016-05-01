@@ -42,10 +42,10 @@ end
 #show
 get '/set_lists/:id' do
   @set_list = SetList.find_by_id(params['id'])
-  @set_1_songs = @set_list.set_items.includes(:song).where(set: 1).order(order: :desc)
-  @set_2_songs = @set_list.set_items.includes(:song).where(set: 2).order(order: :desc)
-  @set_3_songs = @set_list.set_items.includes(:song).where(set: 3).order(order: :desc)
-  @set_4_songs = @set_list.set_items.includes(:song).where(set: 4).order(order: :desc)
+  @set_1_songs = @set_list.set_items.includes(:song).where(set: 1).order(:order)
+  @set_2_songs = @set_list.set_items.includes(:song).where(set: 2).order(:order)
+  @set_3_songs = @set_list.set_items.includes(:song).where(set: 3).order(:order)
+  @set_4_songs = @set_list.set_items.includes(:song).where(set: 4).order(:order)
   erb :"set_lists/show"
 end
 
@@ -53,10 +53,10 @@ end
 get '/set_lists/:id/edit' do
   @set_list = SetList.find_by_id(params['id'])
   @set_items = @set_list.set_items
-  @set_1_songs = @set_list.set_items.includes(:song).where(set: 1).order(order: :desc)
-  @set_2_songs = @set_list.set_items.includes(:song).where(set: 2).order(order: :desc)
-  @set_3_songs = @set_list.set_items.includes(:song).where(set: 3).order(order: :desc)
-  @set_4_songs = @set_list.set_items.includes(:song).where(set: 4).order(order: :desc)
+  @set_1_songs = @set_list.set_items.includes(:song).where(set: 1).order(:order)
+  @set_2_songs = @set_list.set_items.includes(:song).where(set: 2).order(:order)
+  @set_3_songs = @set_list.set_items.includes(:song).where(set: 3).order(:order)
+  @set_4_songs = @set_list.set_items.includes(:song).where(set: 4).order(:order)
   @songs = @set_list.available_songs(@set_items)
   erb :"set_lists/edit"
 end
