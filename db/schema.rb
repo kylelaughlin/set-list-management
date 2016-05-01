@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 9) do
+ActiveRecord::Schema.define(version: 10) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 9) do
     t.date    "performance_date"
     t.integer "venue_id"
     t.integer "number_of_sets"
+    t.string  "venue"
   end
 
   create_table "songs", force: :cascade do |t|

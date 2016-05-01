@@ -11,7 +11,7 @@ set :views, Proc.new {File.join(root, "app/views/")}
 enable :method_override
 
 get "/" do
-  @set_lists = SetList.where("performance_date > ?", Date.today).order("performance_date").limit(5)
+  @set_lists = SetList.where("performance_date > ?", Date.today).order("performance_date").limit(10)
   erb :home
 end
 

@@ -5,6 +5,67 @@ body {
   margin: 0;
 }
 
+/*Home page */
+.header-container {
+  background-image: url("/concert.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding-top: 20px;
+}
+
+.title-bar {
+  background-color: rgba(171,68,37,0.9);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  height: 80px;
+}
+
+.title {
+  color: #FFF;
+  font-weight: lighter;
+  font-size: 3em;
+  letter-spacing: 2px;
+  margin: 10px;
+}
+
+.nav-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.nav-button {
+  color: #FFF;
+  font-weight: lighter;
+  font-size: 1.3em;
+  background-color: rgba(0,0,0,0.7);
+  border-style: solid;
+  border-color: #FFF;
+  border-radius: 5px;
+  border-width: thin;
+  margin: 30px 50px 30px 50px;
+  padding: 10px 25px 10px 25px;
+  text-decoration: none;
+}
+
+.nav-button:hover {
+  color: #626065;
+  background-color: #FFF;
+  cursor: pointer;
+}
+
+.content-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: #FFF;
+  padding: 20px;
+}
+
+/*Create Set List*/
+
 .container {
   height: 100%;
 }
@@ -194,7 +255,7 @@ body {
 }
 
 .clearfix {
-  overflow: ;
+  overflow: auto;
 }
 
 .scroll {
