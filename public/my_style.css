@@ -181,6 +181,7 @@ li.gig-display:hover {
 
 .cancel-modal-button {
   cursor: pointer;
+  text-decoration: none;
 }
 
 .background-img {

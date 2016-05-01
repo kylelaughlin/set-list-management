@@ -32,23 +32,6 @@ post '/set_lists/new' do
 
   end
 end
-#dont need this post request
-#create set list object record
-post '/set_lists/new---old' do
-  @sets = params['sets'].to_i
-  @venues = Venue.where.not(id: 1)
-  date_parts = params['date'].split("-")
-  @date = Date.new(date_parts[0].to_i,date_parts[1].to_i,date_parts[2].to_i)
-  @set_list = SetList.new(name: params['name'],
-                          performance_date: @date,
-                          venue_id: params['venue_id'],
-                          number_of_sets: @sets)
-  if @set_list.save
-    redirect to("/set_lists/new/#{@set_list.id}?sets=#{@sets}")
-  else
-    erb :"set_lists/new"
-  end
-end
 
 #Handle AJAX calls to delete and rewrite the set items associated with each set in a set_list
 post '/set_lists/new/sets' do
