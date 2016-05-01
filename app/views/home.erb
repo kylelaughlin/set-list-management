@@ -5,7 +5,7 @@
     </div>
     <nav>
       <div class="nav-wrapper">
-        <a href="#" class="nav-button">See All Set Lists</a>
+        <a href="/set_lists" class="nav-button">See All Set Lists</a>
         <a href="#" class="nav-button">See All Songs</a>
       </div>
     </nav>
@@ -13,7 +13,7 @@
   <div class="content-wrapper">
     <h3>Upcoming Shows</h3>
     <% @set_lists.each do |set_list| %>
-      <a href="/set_lists/<%=set_list.id%>" class="set_list_item"><%=set_List.venue%></a>
+      <a href="/set_lists/<%=set_list.id%>" class="set-list-item"><%=set_List.venue%></a>
     <% end %>
   </div>
 </div>

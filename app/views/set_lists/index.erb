@@ -1,24 +1,27 @@
-<div class="container text-center">
-  <h1 class="text-center">Set List Index</h1>
-  <hr>
-  <div class="row">
-    <div class="col-xs-6 text-center panel panel-default">
-      <h4>All Set Lists</h4>
-      <ul class="list-unstyled">
-        <% @set_lists.each do |set_list| %>
-          <li>
-            <a href="/set_lists/<%=set_list.id%>"><%=set_list.venue.name%> -
-            <%=set_list.performance_date%></a>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-    <div class="col-xs-5 text-center">
-      <h4>Got a gig coming up? Create a new set list here.</h4>
-      <a class="btn btn-primary" href="set_lists/new">Create Set List</a>
-    </div>
+<div class="container">
+  <div class="header-container flex-center">
+    <h1 class="title dark-back">Set Lists</h1>
   </div>
-  <div>
-    <a class="btn btn-default" href="/">Back to Main Menu</a>
+  <div class="content-wrapper flex-center">
+    <div class="list-wrapper">
+      <ul class="selection-list">
+        <li class="gig-display active-gig-display">Upcoming</li>
+        <li class="gig-display">Past</li>
+      </ul>
+      <div class="gig-container text-center">
+        <div id="upcoming">
+          <h3>Upcoming Gigs</h3>
+          <% @set_lists_upcoming.each do |set_list| %>
+            <a href="/set_lists/<%=set_list.id%>" class="set-list-item">
+              <%=set_list.venue%> <%=set_list.performance_date%>
+            </a>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="new-set-button-wrapper text-center">
+      <h3>Got a new gig? Create the set list here.</h3>
+      <a href="/set_lists/new" class="create-set-button">Create New Set List</a>
+    </div>
   </div>
 </div>

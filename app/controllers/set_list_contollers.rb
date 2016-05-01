@@ -1,6 +1,7 @@
 #index
-get '/set_lists' do
-  @set_lists = SetList.all.order("performance_date")
+get '/set_lists/?' do
+  @set_lists_upcoming = SetList.where("performance_date >= ?", Date.today).order("performance_date")
+  @set_lists_past = SetList.where("performance_date < ?", Date.today).order("performance_date")
   erb :"set_lists/index"
 end
 

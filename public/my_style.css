@@ -60,8 +60,72 @@ body {
   display: flex;
   justify-content: center;
   width: 100%;
+  min-height: 400px;
   background-color: #FFF;
   padding: 20px;
+}
+
+/* SetList Index */
+.flex-center {
+  display: flex;
+  justify-content: center;
+}
+
+.dark-back {
+  border-radius: 5px;
+  background-color: rgba(0,0,0,0.3);
+}
+
+.list-wrapper {
+  width: 45%;
+  margin: 10px;
+}
+
+.new-set-button-wrapper {
+  width: 45%
+  margin: 10px;
+}
+
+.create-set-button {
+    background-color: #428BCA;
+    border-radius: 5px;
+    padding: 10px 25px 10px 25px;
+    color: #FFF;
+    text-decoration: none;
+    font-size: 1.5em;
+    margin-top: 20px;
+}
+
+.selection-list {
+  margin: 0;
+}
+
+li.gig-display {
+  display: inline;
+  border-style: solid;
+  border-width: thin;
+  border-color: #AB4425;
+  border-bottom: none;
+  padding: 5px 10px 3px 10px;
+  margin: 1;
+}
+
+li.gig-display:hover {
+  cursor: pointer;
+}
+
+.gig-container {
+  border-style: solid;
+  border-width: thin;
+  border-color: #AB4425;
+  border-radius: 5px;
+  height: 300px;
+  margin: 2px 20px 20px 10px;
+}
+
+.active-gig-display {
+  background-color: #AB4425;
+  color: #FFF;
 }
 
 /*Create Set List*/
