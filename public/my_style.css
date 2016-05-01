@@ -1,26 +1,67 @@
 body {
-  background-image: url("/crowd.jpg");
-  background-size: cover;
+  background-color: #AB4425;
   font-family: 'Lato', sans-serif;
   padding: 0;
   margin: 0;
 }
 
 .container {
-  max-height: 600px;
+  height: 100%;
+}
+
+.background-img {
+  background-image: url("/crowd.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .header {
+  position: relative;
   width: 100%;
   padding: 3px;
   background-color: rgba(244,244,244,0.5);
+  height: 50px;
 }
 
 .head-name {
-  padding: 0;
-  margin: 0;
+  position: absolute;
+  top: 3px;
+  right: 45%;
+  padding: 5px;
+  margin: auto;
   color: #626065;
   font-weight: lighter;
+  display: inline;
+}
+
+.save-set-list-button {
+  display: inline;
+  background-color: #428BCA;
+  color: #FFF;
+  font-weight: lighter;
+  padding: 5px 10px 5px 10px;
+  margin: 10px;
+  border-radius: 5px;
+  float: right;
+}
+
+.save-set-list-button:hover {
+  cursor: pointer;
+}
+
+.cancel-set-list-button {
+  display: inline;
+  float: right;
+  background-color: #F25C69;
+  color: #FFF;
+  font-weight: lighter;
+  padding: 5px 10px 5px 10px;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+.cancel-set-list-button:hover {
+  cursor: pointer;
 }
 
 .set-info-wrapper {
@@ -28,6 +69,7 @@ body {
   justify-content: center;
   width: 100%;
   background-color: #AB4425;
+  margin-bottom: 10px;
 }
 
 .gig-input {
@@ -78,6 +120,7 @@ body {
   display: flex;
   justify-content: center;
   width: 100%;
+  padding-bottom: 50px;
 }
 
 .hidden {
@@ -123,6 +166,7 @@ body {
 
 .song-name {
   display: inline;
+  font-weight: lighter;
 }
 
 #set_1, #set_2, #set_3, #set_4, #songs {
