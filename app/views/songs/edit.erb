@@ -1,45 +1,51 @@
-<div class="container text-center">
-  <h1>Edit <%=@song.title%></h1>
+<div class="container">
+  <div class="header-container flex-center">
+    <h1 class="title dark-back">Edit Song</h1>
+  </div>
+  <div class="content-wrapper">
+    <div class="form-wrapper text-center">
+      <% if @song.errors.any? %>
+        <% @song.errors.full_messages.each do |m| %>
+          <p>Error: <%=m%></p>
+        <% end %>
+      <% end %>
+      <form action="/songs/<%=@song.id%>" method="post">
+        <input type="hidden" name="_method" value="patch">
+        <div class="form-group">
+          <label for="title">Title:</lablel>
+          <input type="text" name="title" class="form-control" id="title" value="<%=@song.title%>">
+        </div>
+        <div class="form-group">
+          <label for="artist">Artist:</lablel>
+          <input type="text" name="artist" class="form-control" id="artist" value="<%=@song.artist%>">
+        </div>
+        <input class="submit-button" type="submit" value="Update Song">
+      </form>
 
-  <% if @song.errors.any? %>
-    <% @song.errors.full_messages.each do |m| %>
-      <p class="error">Error: <%=m%></p>
-    <% end %>
-  <% end %>
-
-  <form action="/songs/<%=@song.id%>" method="post">
-    <input type="hidden" name="_method" value="patch">
-    <div class="form-group">
-      <label for="title">Title:</lablel>
-      <input type="text" name="title" class="form-control" id="title" value="<%=@song.title%>">
+      <% if @song.active %>
+        <p>
+          <a class="submit-button" href="/songs/<%=@song.id%>/deactivate">Remove Song From Line Up</a>
+        </p>
+      <% else %>
+        <p>
+          <a class="submit-button" href="/songs/<%=@song.id%>/active">Add Song To Line Up</a>
+        </p>
+      <% end %>
+      <form action="/songs/<%=@song.id%>/delete" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <input class="delete-button" type="submit" value="Delete Song">
+      </form>
+      <a href="/songs/<%=@song.id%>">Cancel Edit</a>
     </div>
-    <div class="form-group">
-      <label for="artist">Artist:</lablel>
-      <input type="text" name="artist" class="form-control" id="artist" value="<%=@song.artist%>">
-    </div>
-    <p>Band Members:</p>
-    <% @band_members.each do |b| %>
-      <div class="checkbox">
-      <label><input type="checkbox" name="band_members[]" value="<%=b.id%>"
-        <%= @song_players.include?(b) ? 'checked' : '' %>><%=b.name%>, <%b.instrument%></label>
-      </div>
-    <% end %>
-    <input class="btn btn-primary" type="submit" value="Update Song">
-  </form>
-
-  <% if @song.active %>
-    <p>
-      <a class="btn btn-primary m-t-10" href="/songs/<%=@song.id%>/deactivate">Remove Song From Line Up</a>
-    </p>
-  <% else %>
-    <p>
-      <a class="btn btn-primary m-t-10" href="/songs/<%=@song.id%>/active">Add Song To Line Up</a>
-    </p>
-  <% end %>
-  <form action="/songs/<%=@song.id%>/delete" method="post">
-    <input type="hidden" name="_method" value="delete">
-    <input class="btn btn-danger" type="submit" value="Delete Song">
-  </form>
-  <a class="btn btn-default m-t-10" href="/songs/<%=@song.id%>">Cancel Edit</a>
-
+  </div>
 </div>
+<div id="new-set-button" class="hidden"></div>
+<div id="date" class="hidden"></div>
+<div id="save-set-list-button" class="hidden"></div>
+<div id="cancel-set-list-button" class="hidden"></div>
+<div id="refute-cancel" class="hidden"></div>
+<div id="set-4" class="hidden"></div>
+<div id="set-3" class="hidden"></div>
+<div id="set-2" class="hidden"></div>
+<div id="upcoming-tab" class="hidden"></div>
+<div id="past-tab" class="hidden"></div>

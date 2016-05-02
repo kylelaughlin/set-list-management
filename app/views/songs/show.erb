@@ -1,23 +1,30 @@
-<div class="container text-center">
-  <h1 class="text-center"><%= @song.title %></h1>
-  <hr>
-  <div class="container">
-    <p><b>Artist:</b></p>
-    <p><%=@song.artist%></p>
-    <p><b>Band Members:</b></p>
-    <% if @band_members.empty? %>
-      <p>None</p>
-    <% end %>
-    <% @band_members.each do |b| %>
-      <p><%=b.name%>, <%=b.instrument%>
-    <% end %>
-    <p><b>Status:</b><p>
-    <p><%= @song.active ? "Active" : "Not Active" %></p>
-    <p>
-      <a class="btn btn-primary" href="/songs/<%=@song.id%>/edit">Edit Song</a>
-    </p>
-    <p>
-      <a class="btn btn-default" href="/songs">Back To All Songs</a>
-    </p>
+<div class="container">
+  <div class="header-container flex-center">
+    <h1 class="title dark-back"><%=@song.title%></h1>
+  </div>
+  <div class="content-wrapper">
+    <div class="form-wrapper text-center">
+      <p class="song-label">Artist</p>
+      <p class="song-info"><%=@song.artist%></p>
+      <p class="song-label">Status</p>
+      <p class="song-info end-of-info"><%= @song.active ? "Active" : "Not Active" %></p>
+      <p>
+        <a class="submit-button edit-button" href="/songs/<%=@song.id%>/edit">Edit Song</a>
+      </p>
+      <p>
+        <a href="/songs">Back To All Songs</a>
+      </p>
+
+    </div>
   </div>
 </div>
+<div id="new-set-button" class="hidden"></div>
+<div id="date" class="hidden"></div>
+<div id="save-set-list-button" class="hidden"></div>
+<div id="cancel-set-list-button" class="hidden"></div>
+<div id="refute-cancel" class="hidden"></div>
+<div id="set-4" class="hidden"></div>
+<div id="set-3" class="hidden"></div>
+<div id="set-2" class="hidden"></div>
+<div id="upcoming-tab" class="hidden"></div>
+<div id="past-tab" class="hidden"></div>

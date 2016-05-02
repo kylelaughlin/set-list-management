@@ -1,29 +1,32 @@
-<div class="container text-center">
-  <h1>Create New Song</h1>
-  <hr>
-  <% if @song.errors.any? %>
-    <% @song.errors.full_messages.each do |m| %>
-      <p>Error: <%=m%></p>
-    <% end %>
-  <% end %>
-
-  <form action="/songs" method="post">
-    <div class="form-group">
-      <label for="title">Title:</lablel>
-      <input type="text" name="title" class="form-control" id="title" placeholder="Enter song title">
+<div class="container">
+  <div class="header-container flex-center">
+    <h1 class="title dark-back">New Song</h1>
+  </div>
+  <div class="content-wrapper">
+    <div class="form-wrapper text-center">
+      <% if @song.errors.any? %>
+        <% @song.errors.full_messages.each do |m| %>
+          <p>Error: <%=m%></p>
+        <% end %>
+      <% end %>
+      <form action="/songs" method="post">
+        <label for="title">Title:</label>
+        <input type="text" name="title" class="form-control" id="title" placeholder="Enter song title">
+        <label for="artist">Artist:</label>
+        <input type="text" name="artist" class="form-control" id="artist" placeholder="Enter song artist">
+        <input class="submit-button" type="submit" value="Create Song">
+      </form>
+      <a class="cancel-song-button" href="/songs">Cancel New Song</a>
     </div>
-    <div class="form-group">
-      <label for="artist">Artist:</lablel>
-      <input type="text" name="artist" class="form-control" id="artist" placeholder="Enter song artist">
-    </div>
-    <p>Band Members:</p>
-    <% @band_members.each do |b| %>
-      <div class="checkbox">
-      <label><input type="checkbox" name="band_members[]" value="<%=b.id%>">
-        <%=b.name%>, <%b.instrument%></label>
-      </div>
-    <% end %>
-    <input class="btn btn-primary" type="submit" value="Create Song">
-  </form>
-  <a class="btn btn-default m-t-10" href="/songs">Cancel New Song</a>
+  </div>
 </div>
+<div id="new-set-button" class="hidden"></div>
+<div id="date" class="hidden"></div>
+<div id="save-set-list-button" class="hidden"></div>
+<div id="cancel-set-list-button" class="hidden"></div>
+<div id="refute-cancel" class="hidden"></div>
+<div id="set-4" class="hidden"></div>
+<div id="set-3" class="hidden"></div>
+<div id="set-2" class="hidden"></div>
+<div id="upcoming-tab" class="hidden"></div>
+<div id="past-tab" class="hidden"></div>

@@ -135,7 +135,7 @@ li.gig-display:hover {
   border-width: thin;
   border-color: #AB4425;
   border-radius: 5px;
-  height: 300px;
+  min-height: 300px;
   margin: 2px 20px 20px 10px;
 }
 
@@ -421,6 +421,13 @@ li.gig-display:hover {
   cursor: pointer;
 }
 
+/* Bottom Navigation */
+
+.bottom-nav {
+  display: inline;
+  margin: 10px;
+}
+
 /* Set Show */
 
 .edit-set-button {
@@ -437,4 +444,65 @@ li.gig-display:hover {
 
 .song-name-show {
   margin-left: 8px;
+}
+
+/*New Song */
+.form-control {
+  width: 300px;
+  display: block;
+  margin: auto;
+  font-size: 1.1em;
+}
+
+.form-wrapper {
+  width: 50%;
+}
+
+label {
+  font-size: 1.1em;
+}
+
+.submit-button {
+  background-color: #428BCA;
+  padding: 10px 20px 10px 20px;
+  color: #FFF;
+  text-decoration: none;
+  font-size: 1.1em;
+  margin: 10px 0px 10px 0px;
+  border-radius: 5px;
+  border-style: none;
+}
+
+.submit-button:hover {
+  cursor: pointer;
+}
+
+.delete-button {
+  background-color: #F25C69;
+  padding: 10px 20px 10px 20px;
+  color: #FFF;
+  text-decoration: none;
+  font-size: 1.1em;
+  margin: 10px 0px 10px 0px;
+  border-radius: 5px;
+  border-style: none;
+}
+
+.delete-button:hover {
+  cursor: pointer;
+}
+
+/* Song Show */
+
+.song-info {
+  font-size: 1.6em;
+  margin: 5px;
+}
+
+.song-label {
+  margin: 5px;
+}
+
+.end-of-info {
+  margin-bottom: 40px;
 }

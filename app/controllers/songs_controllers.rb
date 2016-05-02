@@ -1,18 +1,13 @@
 #Songs Controllers
 
 get '/songs' do
-  @songs = Song.where(active: true).order('title')
+  @active_songs = Song.where(active: true).order('title')
+  @inactive_songs = Song.where(active: false).where.not(id: 1).order('title')
   erb :"songs/index"
-end
-
-get '/songs/inactive' do
-  @songs = Song.where(active: false).order('title')
-  erb :"songs/index_inactive"
 end
 
 get '/songs/new' do
   @song = Song.new
-  @band_members = BandMember.all
   erb :"songs/new"
 end
 
